@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAN NGOC TUAN - Software Engineer</title>
+
+    <!-- SEO & Language Alternate -->
+    <link rel="alternate" hreflang="vi" href="index.html" />
+    <link rel="alternate" hreflang="en" href="en/index.html" />
+
+    <script>
+        // Language detection and redirection
+        (function () {
+            const prefLang = localStorage.getItem('pref-lang');
+            const browserLang = navigator.language || navigator.userLanguage;
+
+            if (prefLang === 'en') {
+                window.location.replace('en/index.html');
+            } else if (!prefLang && browserLang.startsWith('en')) {
+                window.location.replace('en/index.html');
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0f172a',
+                        'secondary-bg': '#1e293b',
+                        'accent': '#5eead4',
+                        'text-dim': '#94a3b8',
+                        'text-bright': '#e2e8f0',
+                        'text-pure': '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+
+</head>
+
+<body class="selection:bg-teal-300 selection:text-teal-900 leading-relaxed font-sans scroll-smooth">
+    <div class="mouse-glow" id="glow"></div>
+
+    <div class="lang-switch">
+        <a href="en/index.html" class="lang-btn" title="Switch to English"
+            onclick="localStorage.setItem('pref-lang', 'en')">
+            <i class="fa-solid fa-earth-americas text-xl"></i>
+            <span class="lang-text">Tiếng Anh</span>
+        </a>
+    </div>
+
+    <div
+        class="mx-auto min-h-screen max-w-screen-xl px-2 py-6 font-sans md:px-6 md:py-12 lg:px-12 lg:py-0 relative z-10">
+        <div class="lg:flex lg:justify-between lg:gap-4">
+
+            <!-- Left Column: Header & Nav -->
+            <header class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+                <div>
+                    <h1 class="text-4xl font-bold tracking-tight text-text-bright sm:text-5xl">
+                        <a href="/">PHAN NGOC TUAN</a>
+                    </h1>
+                    <h2 class="mt-3 text-lg font-medium tracking-tight text-text-bright sm:text-xl">Software Engineer
+                    </h2>
+                    <p class="mt-4 max-w-md leading-normal">Building high-quality systems, web applications, <br /> and
+                        digital
+                        experiences at Bado.</p>
+
+                    <nav class="nav hidden lg:block mt-16" id="side-nav">
+                        <ul class="w-max">
+                            <li>
+                                <a class="nav-link group flex items-center py-3 active" href="#about">
+                                    <span
+                                        class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                    <span
+                                        class="nav-text text-sm font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">About</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link group flex items-center py-3" href="#experience">
+                                    <span
+                                        class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                    <span
+                                        class="nav-text text-sm font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Experience</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link group flex items-center py-3" href="#skills">
+                                    <span
+                                        class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                    <span
+                                        class="nav-text text-sm font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Skills</span>
+                                </a>
+                            </li>
+                            <li class="group/nav-item">
+                                <a class="nav-link group flex items-center py-3" href="#projects">
+                                    <span
+                                        class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200"></span>
+                                    <span
+                                        class="nav-text text-sm font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Projects</span>
+                                </a>
+                                <!-- Sub-menu: Expands on hover or active parent -->
+                                <ul class="ml-12 space-y-2 max-h-0 opacity-0 transition-all duration-500 group-hover/nav-item:max-h-40 group-hover/nav-item:opacity-100 group-hover/nav-item:mt-2 group-hover/nav-item:mb-4 [[href='#projects'].active~ul]:max-h-40 [[href='#projects'].active~ul]:opacity-100 [[href='#projects'].active~ul]:mt-2 [[href='#projects'].active~ul]:mb-4"
+                                    id="project-subnav">
+                                    <li><a href="#product-suite"
+                                            class="text-[11px] text-slate-500 hover:text-accent uppercase tracking-widest font-bold transition-all block">Product
+                                            Suite</a></li>
+                                    <li><a href="#ecommerce"
+                                            class="text-[11px] text-slate-500 hover:text-accent uppercase tracking-widest font-bold transition-all block">E-commerce</a>
+                                    </li>
+                                    <li><a href="#branding"
+                                            class="text-[11px] text-slate-500 hover:text-accent uppercase tracking-widest font-bold transition-all block">Corporate</a>
+                                    </li>
+                                    <li><a href="#blockchain"
+                                            class="text-[11px] text-slate-500 hover:text-accent uppercase tracking-widest font-bold transition-all block">Innovations</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <ul class="ml-1 mt-8 flex items-center gap-5" aria-label="Social media">
+                    <li><a class="block hover:text-text-bright" href="https://github.com/tuanphan6511"
+                            target="_blank"><i class="fa-brands fa-github text-2xl"></i></a></li>
+                    <li><a class="block hover:text-text-bright" href="mailto:pntuan6511@gmail.com"><i
+                                class="fa-solid fa-envelope text-2xl"></i></a></li>
+                    <li><a class="block hover:text-text-bright" href="tel:0976636511"><i
+                                class="fa-solid fa-phone text-2xl"></i></a></li>
+                </ul>
+            </header>
+
+            <!-- Right Column: Content sections -->
+            <main id="content" class="pt-24 lg:w-1/2 lg:py-24">
+
+                <!-- About Section -->
+                <section id="about" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+                    <div
+                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-primary-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-text-bright lg:sr-only">About</h2>
+                    </div>
+                    <div>
+                        <p class="mb-4">
+                            Tôi là một nhà phát triển phần mềm đầy nhiệt huyết với hơn 3 năm kinh nghiệm thực chiến
+                            trong việc xây dựng các ứng dụng web quy mô lớn, hệ thống POS và thương mại điện tử.
+                        </p>
+                        <p class="mb-4">
+                            Tại <span class="text-text-bright font-medium">Bado</span>, tôi đã tham gia phát triển các
+                            giải pháp ERP và hệ thống quản lý bán hàng cho hơn <span
+                                class="text-text-bright font-medium">1000 người dùng</span>, tập trung vào hiệu suất
+                            backend và giao diện người dùng hiện đại.
+                        </p>
+                        <p>
+                            Mục tiêu dài hạn của tôi là trở thành một <span class="text-accent font-medium">Solution
+                                Architect</span>, kiến tạo nên những hệ thống phần mềm tinh gọn, mạnh mẽ và có giá trị
+                            bền vững cho doanh nghiệp.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+                    <div
+                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-primary-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-text-bright lg:sr-only">Experience
+                        </h2>
+                    </div>
+
+                    <div class="group/list">
+                        <!-- Exp 1 -->
+                        <div
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl mb-12">
+                            <header
+                                class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                                07/2022 — Present</header>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <div>
+                                        <a class="card-title inline-flex items-baseline font-medium leading-tight text-slate-200 transition-colors group-hover:text-accent focus-visible:text-accent  text-base"
+                                            href="https://bado.vn" target="_blank" rel="noreferrer noopener">
+                                            <span>Software Engineer · Bado — Software Services & Solutions <i
+                                                    class="fa-solid fa-arrow-up-right-from-square text-xs ml-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"></i></span>
+                                        </a>
+                                    </div>
+                                </h3>
+                                <p class="mt-2 text-sm leading-normal">
+                                    Phát triển và duy trì hệ sinh thái giải pháp kinh doanh bao gồm Sales solutions,
+                                    Beauty, Food & Beverage cho hàng ngàn doanh nghiệp. Chịu trách nhiệm build module
+                                    quản lý kho, báo cáo và tích hợp máy POS.
+                                </p>
+                                <ul class="mt-4 flex flex-wrap" aria-label="Technologies used">
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            ASP.NET Core</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            ReactJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            NodeJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            ABP Framework</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            PostgreSQL</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            TypeScript</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Exp 2 -->
+                        <div
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl">
+                            <header
+                                class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                                11/2021 — 06/2022</header>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <div class="text-base text-slate-200">Internship · An Giang University</div>
+                                </h3>
+                                <p class="mt-2 text-sm leading-normal">
+                                    Nghiên cứu và triển khai dự án tích hợp Blockchain vào quản lý hồ sơ sinh viên sử
+                                    dụng Hyperledger Fabric. Thiết kế kiến trúc node và viết Smart Contracts
+                                    (Chaincode).
+                                </p>
+                                <ul class="mt-4 flex flex-wrap" aria-label="Technologies used">
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            Hyperledger Fabric</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            NodeJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            Docker</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
+                                            CouchDB</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+                    <div
+                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-primary-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-text-bright lg:sr-only">Projects
+                        </h2>
+                    </div>
+
+                    <div class="group/list">
+                        <!-- Bado Retail Suite -->
+                        <div id="product-suite"
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl mb-4 scroll-mt-32">
+                            <div class="z-10 sm:col-span-2 mb-4 sm:mb-0">
+                                <span
+                                    class="text-[10px] font-bold text-accent uppercase tracking-widest border border-accent/30 px-2 py-1 rounded">Product
+                                    Suite</span>
+                            </div>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <span
+                                        class="inline-flex items-baseline font-semibold leading-tight text-slate-200 text-base">
+                                        Bado Retail & Management Ecosystem
+                                    </span>
+                                </h3>
+                                <p class="mt-2 text-sm leading-normal text-text-dim">
+                                    Hệ sinh thái SaaS quy mô lớn chuyên biệt cho quản lý bán hàng, vận hành chuỗi và
+                                    giáo dục (1000+ users).
+                                </p>
+
+                                <div class="mt-4 space-y-4">
+                                    <div
+                                        class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-colors shadow-sm">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-bold text-slate-200">RetailCore & Admin
+                                                Dashboard</span>
+                                            <a href="https://core.bado.vn" target="_blank"
+                                                class="text-xs text-accent hover:underline flex items-center">core.bado.vn
+                                                <i class="fa-solid fa-arrow-up-right-from-square ml-1 scale-75"></i></a>
+                                        </div>
+                                        <p class="text-[11px] text-text-dim italic mb-1">C#, ASP.NET Core, ABP
+                                            Framework, PostgreSQL, ReactJS, Ant Design, MUI, Kendo UI</p>
+                                        <p class="text-[11px] text-text-dim">Hệ quản trị trung tâm: Kho bãi, Bán hàng
+                                            (Omnichannel), Tài chính và Báo cáo BI cho doanh nghiệp.</p>
+                                    </div>
+
+                                    <div
+                                        class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-colors">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-bold text-slate-200">RetailFnb & POS</span>
+                                            <a href="https://fnb.bado.vn" target="_blank"
+                                                class="text-xs text-accent hover:underline flex items-center">fnb.bado.vn
+                                                <i class="fa-solid fa-arrow-up-right-from-square ml-1 scale-75"></i></a>
+                                        </div>
+                                        <p class="text-[11px] text-text-dim italic">NodeJS, Firestore, SQLite, React
+                                            Native</p>
+                                        <p class="text-[11px] text-text-dim">Giải pháp F&B/Retail POS xử lý dữ liệu
+                                            realtime và ngoại tuyến mượt mà trên mobile/tablet.</p>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div
+                                            class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-colors">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-bold text-slate-200">RetailEdu</span>
+                                                <a href="https://edu.bado.vn" target="_blank"
+                                                    class="text-xs text-accent hover:underline flex items-center">edu.bado.vn</a>
+                                            </div>
+                                            <p class="text-[11px] text-text-dim">Hệ thống quản lý giáo dục, đào tạo: Học
+                                                viên, học phí và lịch học.</p>
+                                        </div>
+                                        <div
+                                            class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-colors">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span class="text-sm font-bold text-slate-200">RetailCare</span>
+                                                <a href="https://care.bado.vn" target="_blank"
+                                                    class="text-xs text-accent hover:underline flex items-center">care.bado.vn</a>
+                                            </div>
+                                            <p class="text-[11px] text-text-dim">Module chuyên biệt cho Spa, Beauty &
+                                                Clinic: Hồ sơ CSKH chuyên sâu.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-colors">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-bold text-slate-200">Bado.vn Official Site</span>
+                                            <a href="https://bado.vn" target="_blank"
+                                                class="text-xs text-accent hover:underline flex items-center">bado.vn <i
+                                                    class="fa-solid fa-arrow-up-right-from-square ml-1 scale-75"></i></a>
+                                        </div>
+                                        <p class="text-[11px] text-text-dim">Website giới thiệu giải pháp và kết nối
+                                            doanh nghiệp với hệ sinh thái Bado.</p>
+                                    </div>
+                                </div>
+
+                                <ul class="mt-6 flex flex-wrap" aria-label="Technologies used">
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            ASP.NET Core</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            ABP Framework</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            ReactJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            Firestore</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            PostgreSQL</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- E-commerce Theme System -->
+                        <div id="ecommerce"
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl mb-4 scroll-mt-32">
+                            <div class="z-10 sm:col-span-2 mb-4 sm:mb-0 text-center">
+                                <span
+                                    class="text-[10px] font-bold text-accent uppercase tracking-widest border border-accent/30 px-2 py-1 rounded">E-commerce</span>
+                            </div>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <a class="card-title inline-flex items-baseline font-medium leading-tight text-slate-200 transition-colors group-hover:text-accent text-base"
+                                        href="https://bado.vn" target="_blank">
+                                        <span>Bado Marketplace & Themes <i
+                                                class="fa-solid fa-arrow-up-right-from-square text-xs ml-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"></i></span>
+                                    </a>
+                                </h3>
+                                <p class="mt-2 text-sm leading-normal text-text-dim">
+                                    Hệ thống builder kéo thả linh hoạt cho phép tùy biến giao diện website bán hàng, tối
+                                    ưu hóa tốc độ và tỷ lệ chuyển đổi.
+                                </p>
+
+                                <div class="mt-4 space-y-4">
+                                    <div>
+                                        <h4
+                                            class="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-wide opacity-70">
+                                            Sales & E-commerce</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-basket-shopping mr-2 text-green-400"></i>
+                                                FRESHMART</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-leaf mr-2 text-green-500"></i> FRESH MARKET</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=trang-suc-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-gem mr-2 text-cyan-400"></i> AURÉLIA</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=trang-suc-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-gem mr-2 text-blue-400"></i> DOLCE BIJOUX</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=ky-thuat-so-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-mobile-screen mr-2 text-accent"></i> AGI
+                                                PHONE</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=ky-thuat-so-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-laptop mr-2 text-indigo-400"></i> TB MOBILE</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=ky-thuat-so-3" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-keyboard mr-2 text-purple-400"></i> HT SHOP</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=thoi-trang-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-shirt mr-2 text-orange-400"></i> VINH TAYLOR</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=thoi-trang-3" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-vest mr-2 text-red-500"></i> YOUNG WEAR</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=thoi-trang-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-dumbbell mr-2 text-yellow-500"></i> YUMI
+                                                SPORTSHOP</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=me-be-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-baby mr-2 text-pink-400"></i> MOMMY BABY</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=enterprice-theme-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-gear mr-2 text-slate-400"></i> NDPOS</a>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <h4
+                                                class="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-wide opacity-70">
+                                                Corporate & Booking</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                <a href="https://bado.vn/ThemeWeb?theme=enterprice-theme-1"
+                                                    target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-briefcase mr-2 text-blue-500"></i>
+                                                    INTERBIZLINK</a>
+                                                <a href="https://bado.vn/ThemeWeb?theme=khach-san-1" target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-bed mr-2 text-amber-500"></i> STAYHOME</a>
+                                                <a href="https://bado.vn/ThemeWeb?theme=khach-san-2" target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-hotel mr-2 text-yellow-600"></i> ROYAL
+                                                    PALACE</a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-wide opacity-70">
+                                                Spa & Beauty</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                <a href="https://bado.vn/ThemeWeb?theme=spa-theme-1" target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-spa mr-2 text-rose-400"></i> BELLA SPA</a>
+                                                <a href="https://bado.vn/ThemeWeb?theme=spa-theme-2" target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-heart mr-2 text-pink-500"></i> CINNY
+                                                    CENTER</a>
+                                                <a href="https://bado.vn/ThemeWeb?theme=spa-theme-3" target="_blank"
+                                                    class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                        class="fa-solid fa-face-smile mr-2 text-teal-400"></i> ILLUME
+                                                    SKINCARE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-wide opacity-70">
+                                            F&B & Restaurant</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="https://bado.vn/ThemeWeb?theme=fnb-theme-1" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-burger mr-2 text-yellow-600"></i> BIG BURGER</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=fnb-theme-2" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-mug-hot mr-2 text-orange-900"></i> GREAT
+                                                COFFEE</a>
+                                            <a href="https://bado.vn/ThemeWeb?theme=fnb-theme-3" target="_blank"
+                                                class="text-[10px] bg-slate-800/50 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition-colors flex items-center"><i
+                                                    class="fa-solid fa-bowl-rice mr-2 text-red-500"></i> BADO DIMSUM</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="mt-6 flex flex-wrap" aria-label="Technologies used">
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            NextJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            ReactJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            Tailwind</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            Bootstrap</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium leading-5">
+                                            SCSS</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Branding & Corporate -->
+                        <div id="branding"
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl mb-4 scroll-mt-32">
+                            <div class="z-10 sm:col-span-2 mb-4 sm:mb-0">
+                                <span
+                                    class="text-[10px] font-bold text-accent uppercase tracking-widest border border-accent/30 px-2 py-1 rounded">Corporate</span>
+                            </div>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <span
+                                        class="inline-flex items-baseline font-semibold leading-tight text-slate-200 text-base">
+                                        Corporate Performance Sites
+                                    </span>
+                                </h3>
+                                <p class="mt-2 text-sm leading-normal text-text-dim">
+                                    Thiết kế và phát triển landing pages, website doanh nghiệp tập trung vào UI/UX, tốc
+                                    độ tải trang và SEO.
+                                </p>
+                                <div class="mt-4 space-y-3">
+                                    <a href="https://vinfast3s-angiang.com" target="_blank"
+                                        class="block bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-all group-item">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span
+                                                class="text-sm font-bold text-slate-200 group-item-hover:text-accent">Vinfast
+                                                3S An Giang</span>
+                                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-accent"></i>
+                                        </div>
+                                        <p class="text-[11px] text-text-dim">Website đại lý ô tô chính hãng: Tối ưu UI
+                                            sang trọng, chuyển đổi khách hàng tiềm năng cao.</p>
+                                    </a>
+                                </div>
+                                <ul class="mt-4 flex flex-wrap">
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium">
+                                            NextJS</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium">
+                                            Tailwind</div>
+                                    </li>
+                                    <li class="mr-1.5 mt-2">
+                                        <div
+                                            class="tag flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium">
+                                            SEO Optimized</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Innovations & Academic -->
+                        <div id="blockchain"
+                            class="experience-card group relative grid transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 p-4 rounded-xl mb-4 scroll-mt-32">
+                            <div class="z-10 sm:col-span-2 mb-4 sm:mb-0">
+                                <span
+                                    class="text-[10px] font-bold text-accent uppercase tracking-widest border border-accent/30 px-2 py-1 rounded">Innovations</span>
+                            </div>
+                            <div class="z-10 sm:col-span-6">
+                                <h3 class="font-medium leading-snug text-text-bright">
+                                    <span
+                                        class="inline-flex items-baseline font-semibold leading-tight text-slate-200 text-base">
+                                        Innovations & Academic Projects
+                                    </span>
+                                </h3>
+                                <div class="mt-4 space-y-4">
+                                    <div
+                                        class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-all">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-bold text-slate-200">Blockchain Student Records
+                                                (Thesis)</span>
+                                            <a href="https://github.com/tuanphan6511/BlockchainHososinhvien"
+                                                target="_blank"
+                                                class="text-xs text-accent hover:underline flex items-center"><i
+                                                    class="fa-brands fa-github mr-1"></i> Source</a>
+                                        </div>
+                                        <p class="text-[11px] text-text-dim mb-1">Hyperledger Fabric, NodeJS, Docker,
+                                            CouchDB, HTML/Bootstrap</p>
+                                        <p class="text-[11px] text-text-dim">Đồ án tốt nghiệp xuất sắc: Hệ thống quản lý
+                                            hồ sơ sinh viên phi tập trung, đảm bảo tính minh bạch và bất biến.</p>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div
+                                            class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-all">
+                                            <span class="text-sm font-bold text-slate-200 block mb-1">Gear Shop
+                                                E-com</span>
+                                            <p class="text-[11px] text-text-dim italic">PHP, MySQL, Bootstrap</p>
+                                            <p class="text-[11px] text-text-dim">Website bán linh kiện điện tử đầy đủ
+                                                giỏ hàng và thanh toán.</p>
+                                        </div>
+                                        <a href="https://tuanphan6511.github.io/wedding/" target="_blank"
+                                            class="bg-secondary-bg/30 p-3 rounded-lg border border-slate-700/50 hover:border-accent/30 transition-all block group-item">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <span
+                                                    class="text-sm font-bold text-slate-200 group-item-hover:text-accent">Wedding
+                                                    & Blog Design</span>
+                                                <i
+                                                    class="fa-solid fa-arrow-up-right-from-square text-[10px] text-accent"></i>
+                                            </div>
+                                            <p class="text-[11px] text-text-dim">JS, HTML, CSS Animation: Sáng tạo các
+                                                giao diện landing page hiện đại, hiệu ứng mượt mà.</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+                    <div
+                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-primary-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-text-bright lg:sr-only">Skills</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50">
+                            <h4
+                                class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
+                                <i class="fa-solid fa-code mr-2 text-accent"></i> Programming Languages
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">C#</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">JavaScript (ES6+)</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">TypeScript</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">PHP</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Python</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">HTML5 / CSS3</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50">
+                            <h4
+                                class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
+                                <i class="fa-solid fa-server mr-2 text-accent"></i> Backend & Frameworks
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">ASP.NET Core</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">ABP Framework</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">NodeJS</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">ASP.NET MVC</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50">
+                            <h4
+                                class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
+                                <i class="fa-solid fa-layer-group mr-2 text-accent"></i> Frontend & Tools
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">ReactJS</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">NextJS</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Tailwind CSS</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Ant Design</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">MUI</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Redux</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50">
+                            <h4
+                                class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
+                                <i class="fa-solid fa-boxes-stacked mr-2 text-accent"></i> Databases & Devops
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">PostgreSQL</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">SQL Server</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Firestore</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">SQLite</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Docker</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Git / GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
