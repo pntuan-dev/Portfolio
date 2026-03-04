@@ -268,3 +268,72 @@ body {
         border-bottom-color: rgba(94, 234, 212, 0.25);
     }
 }
+
+/* =============================================
+   PROFILE INFO CAROUSEL
+   ============================================= */
+.profile-info-carousel {
+    height: 1.75rem;
+    overflow: hidden;
+}
+
+.profile-info-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: slideVertical 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+.profile-info-item {
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+@keyframes slideVertical {
+
+    0%,
+    14% {
+        transform: translateY(0);
+    }
+
+    16%,
+    30% {
+        transform: translateY(-16.66%);
+    }
+
+    33%,
+    47% {
+        transform: translateY(-33.33%);
+    }
+
+    50%,
+    64% {
+        transform: translateY(-50%);
+    }
+
+    66%,
+    80% {
+        transform: translateY(-66.66%);
+    }
+
+    83%,
+    97% {
+        transform: translateY(-83.33%);
+    }
+
+    100% {
+        transform: translateY(-83.33%);
+    }
+}
+
+@media (max-width: 639px) {
+    .profile-info-carousel {
+        height: 1.5rem;
+    }
+
+    .profile-info-item {
+        height: 1.5rem;
+    }
+}
