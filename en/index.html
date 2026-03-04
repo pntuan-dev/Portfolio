@@ -53,11 +53,12 @@
     <div class="mouse-glow" id="glow"></div>
 
     <div class="lang-switch">
-        <a href="../index.html" class="lang-btn" title="Switch to Vietnamese"
-            onclick="localStorage.setItem('pref-lang', 'vi')">
-            <i class="fa-solid fa-earth-americas text-xl"></i>
-            <span class="lang-text">Tiếng Việt</span>
-        </a>
+        <div class="lang-pill">
+            <a href="../index.html" class="lang-btn" title="Switch to Vietnamese"
+                onclick="localStorage.setItem('pref-lang', 'vi')">VI</a>
+            <div class="lang-divider"></div>
+            <span class="lang-btn active">EN</span>
+        </div>
     </div>
 
     <div
@@ -131,12 +132,31 @@
                 </div>
 
                 <ul class="ml-1 mt-8 flex items-center gap-5" aria-label="Social media">
-                    <li><a class="block hover:text-text-bright" href="https://github.com/tuanphan6511"
-                            target="_blank"><i class="fa-brands fa-github text-2xl"></i></a></li>
+                    <li class="github-social">
+                        <a class="block hover:text-text-bright" href="https://github.com/pntuan-dev" target="_blank"><i
+                                class="fa-brands fa-github text-2xl"></i></a>
+                        <div class="github-tooltip">
+                            <a href="https://github.com/pntuan-dev" target="_blank" class="github-tooltip-link">
+                                <i class="fa-brands fa-github"></i>
+                                github.com/pntuan-dev
+                            </a>
+                            <a href="https://github.com/tuanphan6511" target="_blank" class="github-tooltip-link">
+                                <i class="fa-brands fa-github"></i>
+                                github.com/tuanphan6511
+                            </a>
+                        </div>
+                    </li>
                     <li><a class="block hover:text-text-bright" href="mailto:pntuan6511@gmail.com"><i
                                 class="fa-solid fa-envelope text-2xl"></i></a></li>
                     <li><a class="block hover:text-text-bright" href="tel:0976636511"><i
                                 class="fa-solid fa-phone text-2xl"></i></a></li>
+                    <li>
+                        <a class="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent transition-all hover:bg-accent/20 hover:border-accent"
+                            href="../assets/resource/PhanNgocTuan_AssociateEngineer_Resume.pdf" target="_blank">
+                            <i class="fa-solid fa-file-pdf text-sm"></i>
+                            <span>CV</span>
+                        </a>
+                    </li>
                 </ul>
             </header>
 
@@ -194,9 +214,9 @@
                                     </div>
                                 </h3>
                                 <p class="mt-2 text-sm leading-normal">
-                                    Develop and maintain a business solutions ecosystem including Sales, Beauty, Food &
-                                    Beverage solutions for thousands of businesses. Responsible for building inventory
-                                    management, reporting modules, and POS integration.
+                                    Develop and maintain a business solution ecosystem including Sales, Beauty, Food &
+                                    Beverage solutions for thousands of businesses. Responsible for building product,
+                                    customer management, and POS modules.
                                 </p>
                                 <ul class="mt-4 flex flex-wrap" aria-label="Technologies used">
                                     <li class="mr-1.5 mt-2">
@@ -208,11 +228,6 @@
                                         <div
                                             class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
                                             ReactJS</div>
-                                    </li>
-                                    <li class="mr-1.5 mt-2">
-                                        <div
-                                            class="tag flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5">
-                                            NodeJS</div>
                                     </li>
                                     <li class="mr-1.5 mt-2">
                                         <div
@@ -310,8 +325,8 @@
                                         <div class="flex items-center justify-between mb-1">
                                             <span class="text-sm font-bold text-slate-200">RetailCore & Admin
                                                 Dashboard</span>
-                                            <a href="https://core.bado.vn" target="_blank"
-                                                class="text-xs text-accent hover:underline flex items-center">core.bado.vn
+                                            <a href="https://mabo.bado.vn" target="_blank"
+                                                class="text-xs text-accent hover:underline flex items-center">mabo.bado.vn
                                                 <i class="fa-solid fa-arrow-up-right-from-square ml-1 scale-75"></i></a>
                                         </div>
                                         <p class="text-[11px] text-text-dim italic mb-1">C#, ASP.NET Core, ABP
@@ -722,7 +737,7 @@
                             class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50">
                             <h4
                                 class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
-                                <i class="fa-solid fa-boxes-stacked mr-2 text-accent"></i> Databases & Devops
+                                <i class="fa-solid fa-boxes-stacked mr-2 text-accent"></i> Databases &amp; Devops
                             </h4>
                             <div class="flex flex-wrap gap-2">
                                 <span class="tag px-3 py-1 rounded text-[11px] font-semibold">PostgreSQL</span>
@@ -731,6 +746,20 @@
                                 <span class="tag px-3 py-1 rounded text-[11px] font-semibold">SQLite</span>
                                 <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Docker</span>
                                 <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Git / GitHub</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="experience-card p-4 rounded-xl transition-all border border-transparent hover:border-slate-700/50 md:col-span-2">
+                            <h4
+                                class="text-text-bright font-bold mb-4 uppercase tracking-tighter text-sm flex items-center">
+                                <i class="fa-solid fa-robot mr-2 text-accent"></i> AI Coding Assistants
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Antigravity</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Cursor</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Kiro</span>
+                                <span class="tag px-3 py-1 rounded text-[11px] font-semibold">Copilot</span>
                             </div>
                         </div>
                     </div>
