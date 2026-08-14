@@ -124,7 +124,7 @@ body {
     justify-content: center;
     position: relative;
     box-sizing: border-box;
-    padding-top: 1.5rem;
+    padding-top: 4.5rem;
     padding-bottom: 1.5rem;
     overflow-y: auto;
   }
@@ -694,5 +694,252 @@ body {
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   COMPACT VIEWPORT & DISPLAY SCALING RESPONSIVE SYSTEM (1366x768 & ZOOM 125%-150%)
+   ========================================================================== */
+
+/* --- Tối ưu cho màn hình có chiều cao hạn chế (<= 900px) --- */
+@media (min-width: 1024px) and (max-height: 900px) {
+  .zone-section {
+    padding-top: 4.25rem !important;
+    padding-bottom: 0.85rem !important;
+    justify-content: center !important;
+  }
+  
+  .floating-dot-nav {
+    right: 1rem !important;
+    gap: 0.85rem !important;
+  }
+
+  /* Arc Carousel Stages */
+  .arc-carousel-stage {
+    height: 430px !important;
+  }
+  .arc-card {
+    max-width: 440px !important;
+  }
+}
+
+/* --- Tối ưu cho màn hình 1366x768 chuẩn & Zoom 125% (<= 820px height) --- */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .zone-section {
+    padding-top: 3.85rem !important;
+    padding-bottom: 0.65rem !important;
+  }
+
+  /* Zone 1: Hero Studio */
+  #zone-hero {
+    padding-top: 0 !important;
+  }
+  #zone-hero h1 {
+    font-size: 2.35rem !important;
+    line-height: 1.15 !important;
+  }
+  #zone-hero p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+  #zone-hero .magazine-poster-frame {
+    max-height: 46vh !important;
+    border-radius: 1rem !important;
+  }
+  #zone-hero .magazine-poster-frame img {
+    max-height: 46vh !important;
+    object-fit: cover !important;
+  }
+  #zone-hero .grid-cols-3 .p-3 {
+    padding: 0.45rem 0.6rem !important;
+  }
+  #zone-hero .counter-val {
+    font-size: 1.25rem !important;
+  }
+
+  /* Zone 2 & Zone 4: Arc Carousels */
+  .arc-carousel-stage {
+    height: 380px !important;
+  }
+  .arc-card {
+    max-width: 400px !important;
+    border-radius: 1rem !important;
+  }
+  .arc-card .luxury-card {
+    padding: 0.45rem 0.6rem !important;
+    border-radius: 0.875rem !important;
+  }
+  .arc-card h3 {
+    font-size: 0.92rem !important;
+    line-height: 1.25 !important;
+  }
+  .arc-card p {
+    font-size: 0.7rem !important;
+    line-height: 1.35 !important;
+    margin-top: 0.2rem !important;
+  }
+  .arc-card .aspect-\[16\/10\] {
+    aspect-ratio: 16 / 9.5 !important;
+  }
+  .arc-nav-btn {
+    width: 2.85rem !important;
+    height: 2.85rem !important;
+    font-size: 1rem !important;
+  }
+  #sliderPagination, #themeSliderPagination {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Zone 3: Services & Career Timeline */
+  #zone-services .max-w-7xl {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+  #zone-services h2 {
+    font-size: 1.6rem !important;
+  }
+  #zone-services .grid {
+    gap: 0.65rem !important;
+  }
+  #zone-services .p-5, #zone-services .p-4 {
+    padding: 0.55rem 0.75rem !important;
+  }
+  #zone-services .font-display.text-xl, #zone-services .font-display.text-2xl {
+    font-size: 1.25rem !important;
+  }
+  #zone-services .tag-sage {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+
+  /* Zone 5: Contact CTA & Footer */
+  #zone-contact {
+    padding-top: 0 !important;
+    padding-bottom: 0.75rem !important;
+  }
+  #zone-contact h2 {
+    font-size: 1.85rem !important;
+    line-height: 1.15 !important;
+  }
+  #zone-contact a.font-display {
+    font-size: 1.25rem !important;
+  }
+  #zone-contact .hero-magazine-title {
+    font-size: 3.6rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* --- Tối ưu cho màn hình cực thấp & Zoom 150% (<= 720px height) --- */
+@media (min-width: 1024px) and (max-height: 720px) {
+  .zone-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+
+  #zone-hero h1 {
+    font-size: 1.85rem !important;
+  }
+  #zone-hero .magazine-poster-frame {
+    max-height: 40vh !important;
+  }
+  #zone-hero .magazine-poster-frame img {
+    max-height: 40vh !important;
+  }
+
+  .arc-carousel-stage {
+    height: 330px !important;
+  }
+  .arc-card {
+    max-width: 360px !important;
+  }
+  .arc-card .p-3, .arc-card .p-4 {
+    padding: 0.35rem 0.5rem !important;
+  }
+  .arc-card .tag-sage {
+    font-size: 0.62rem !important;
+    padding: 0.12rem 0.45rem !important;
+  }
+  .arc-nav-btn {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  #zone-services h2 {
+    font-size: 1.35rem !important;
+  }
+  #zone-services .p-4 {
+    padding: 0.45rem 0.6rem !important;
+  }
+
+  #zone-contact h2 {
+    font-size: 1.5rem !important;
+  }
+  #zone-contact a.font-display {
+    font-size: 1.1rem !important;
+  }
+  #zone-contact .hero-magazine-title {
+    font-size: 2.85rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* --- Màn hình chiều rộng trung bình (1024px <= width <= 1440px) --- */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .arc-card.prev-1 {
+    transform: translateX(-45%) scale(0.85) translateZ(-60px) rotateY(16deg);
+  }
+  .arc-card.next-1 {
+    transform: translateX(45%) scale(0.85) translateZ(-60px) rotateY(-16deg);
+  }
+  .arc-card.prev-2 {
+    transform: translateX(-80%) scale(0.72) translateZ(-130px) rotateY(24deg);
+  }
+  .arc-card.next-2 {
+    transform: translateX(80%) scale(0.72) translateZ(-130px) rotateY(-24deg);
+  }
+}
+
+/* --- Cơ chế an toàn (Graceful Fallback): Khi viewport quá nhỏ (<= 620px height) --- */
+@media (min-width: 1024px) and (max-height: 620px) {
+  .zone-scroll-wrapper {
+    scroll-snap-type: y proximity !important;
+  }
+  .zone-section {
+    min-height: 100vh !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* ==========================================================================
+   FLOATING QUICK CONTACT BUBBLES STYLING
+   ========================================================================== */
+.contact-bubble-btn {
+  will-change: transform, box-shadow;
+}
+
+.contact-bubble-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #1e261c;
+}
+
+@media (max-width: 640px) {
+  #floatingContactBubbles {
+    bottom: 1.25rem !important;
+    right: 1.25rem !important;
+    gap: 0.5rem !important;
+  }
+  .contact-bubble-tooltip {
+    display: none !important;
   }
 }

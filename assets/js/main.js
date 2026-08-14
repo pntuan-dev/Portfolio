@@ -118,7 +118,7 @@ function showDotLabelBriefly(zoneIndex) {
   if (!dotItems || dotItems.length === 0) return;
 
   dotItems.forEach((item) => item.classList.remove('show-label'));
-  
+
   if (dotItems[zoneIndex]) {
     dotItems[zoneIndex].classList.add('show-label');
     if (activeDotTimeout) clearTimeout(activeDotTimeout);
@@ -160,7 +160,7 @@ function initFloatingDotNav() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        
+
         // Update header background based on active zone
         if (mainHeader) {
           if (id === 'zone-hero') {
@@ -227,7 +227,7 @@ function initRecentWorkSlider() {
     cards.forEach((card, index) => {
       // Calculate circular offset relative to activeIndex
       const offset = (index - activeIndex + totalCards) % totalCards;
-      
+
       // Clear all state classes
       card.classList.remove('active', 'prev-1', 'next-1', 'prev-2', 'next-2', 'hidden-left', 'hidden-right');
 
@@ -263,7 +263,8 @@ function initRecentWorkSlider() {
 
   // Click on cards to activate
   cards.forEach((card, index) => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
       if (index !== activeIndex) {
         activeIndex = index;
         updateArcCarousel();
@@ -406,7 +407,7 @@ function initThemeArcSlider() {
 
     filteredCards.forEach((card, index) => {
       const offset = (index - activeIndex + total) % total;
-      
+
       card.classList.remove('active', 'prev-1', 'next-1', 'prev-2', 'next-2', 'hidden-left', 'hidden-right');
 
       if (offset === 0) {
@@ -467,7 +468,8 @@ function initThemeArcSlider() {
 
   // Card click to activate
   allCards.forEach((card) => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
       const idxInFiltered = filteredCards.indexOf(card);
       if (idxInFiltered !== -1 && idxInFiltered !== activeIndex) {
         activeIndex = idxInFiltered;
@@ -664,7 +666,7 @@ function initPreloader() {
   // Lock scrolling while preloading
   document.body.style.overflow = 'hidden';
 
-  const DURATION = 1200; // Exactly 1.2s
+  const DURATION = 600; // Exactly 0.8s (800ms)
   const startTime = performance.now();
 
   function updateProgress(currentTime) {
