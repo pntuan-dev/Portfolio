@@ -38,13 +38,14 @@ function initZoneSnapScroll() {
   window.goToZone = function (index) {
     if (index < 0 || index >= zones.length) return;
     currentZoneIndex = index;
+    window.currentZoneIndex = index;
     isScrolling = true;
 
-    if (window.innerWidth >= 1024) {
-      zones[currentZoneIndex].scrollIntoView({ behavior: 'smooth' });
-    } else {
-      zones[currentZoneIndex].scrollIntoView({ behavior: 'smooth' });
+    if (typeof showDotLabelBriefly === 'function') {
+      showDotLabelBriefly(index);
     }
+
+    zones[currentZoneIndex].scrollIntoView({ behavior: 'smooth' });
 
     setTimeout(() => {
       isScrolling = false;
@@ -109,11 +110,29 @@ function initZoneSnapScroll() {
   });
 }
 
+let activeDotTimeout = null;
+
+function showDotLabelBriefly(zoneIndex) {
+  const dotItems = document.querySelectorAll('.floating-dot-item');
+  if (!dotItems || dotItems.length === 0) return;
+
+  dotItems.forEach((item) => item.classList.remove('show-label'));
+  
+  if (dotItems[zoneIndex]) {
+    dotItems[zoneIndex].classList.add('show-label');
+    if (activeDotTimeout) clearTimeout(activeDotTimeout);
+    activeDotTimeout = setTimeout(() => {
+      dotItems[zoneIndex].classList.remove('show-label');
+    }, 2200);
+  }
+}
+
 /* ==========================================================================
    2. FLOATING DOT NAVIGATION TRACKER
    ========================================================================== */
 function initFloatingDotNav() {
   const dotBtns = document.querySelectorAll('.floating-dot-btn');
+  const dotItems = document.querySelectorAll('.floating-dot-item');
   const zones = document.querySelectorAll('.zone-section');
   if (dotBtns.length === 0 || zones.length === 0) return;
 
@@ -152,10 +171,14 @@ function initFloatingDotNav() {
           }
         }
 
-        dotBtns.forEach((btn) => {
+        dotBtns.forEach((btn, idx) => {
           const targetId = btn.getAttribute('data-zone-id');
           if (targetId === id) {
             btn.classList.add('active');
+            if (window.currentZoneIndex !== idx) {
+              window.currentZoneIndex = idx;
+              showDotLabelBriefly(idx);
+            }
           } else {
             btn.classList.remove('active');
           }
@@ -380,29 +403,51 @@ function initQrModal() {
 }
 
 /* ==========================================================================
-   7. MOBILE NAVIGATION DRAWER
+   7. FULLSCREEN OVERLAY NAVIGATION CONTROLLER
    ========================================================================== */
 function initMobileDrawer() {
   const menuToggle = document.getElementById('mobileMenuToggle');
-  const drawer = document.getElementById('mobileNavDrawer');
-  const closeBtn = document.getElementById('mobileDrawerClose');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
-  if (!menuToggle || !drawer) return;
+  const overlay = document.getElementById('fullNavOverlay');
+  const closeBtn = document.getElementById('fullNavClose');
+  const backdrop = document.getElementById('fullNavBackdrop');
+  const navLinks = document.querySelectorAll('.nav-overlay-link');
+  if (!menuToggle || !overlay) return;
 
-  const openDrawer = () => {
-    drawer.classList.remove('translate-x-full');
+  const openOverlay = () => {
+    // Highlight current active zone link
+    const currentIdx = typeof window.currentZoneIndex === 'number' ? window.currentZoneIndex : 0;
+    navLinks.forEach((link) => {
+      const zIdx = parseInt(link.getAttribute('data-zone-index'), 10);
+      if (zIdx === currentIdx) {
+        link.classList.add('active-menu-item');
+      } else {
+        link.classList.remove('active-menu-item');
+      }
+    });
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   };
 
-  const closeDrawer = () => {
-    drawer.classList.add('translate-x-full');
+  const closeOverlay = () => {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
   };
 
-  menuToggle.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  menuToggle.addEventListener('click', openOverlay);
+  if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+  if (backdrop) backdrop.addEventListener('click', closeOverlay);
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeOverlay();
+    }
+  });
 
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      closeDrawer();
+      closeOverlay();
       const zoneIndex = parseInt(link.getAttribute('data-zone-index'), 10);
       if (!isNaN(zoneIndex) && window.goToZone) {
         window.goToZone(zoneIndex);

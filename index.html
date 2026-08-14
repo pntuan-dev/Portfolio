@@ -122,34 +122,84 @@
     </nav>
 
     <!-- ==========================================================================
-       MOBILE OFF-CANVAS NAVIGATION DRAWER
+       FULLSCREEN OVERLAY NAVIGATION (FULLSCREEN BACKDROP WITH COMPACT TYPOGRAPHY)
        ========================================================================== -->
-    <div id="mobileNavDrawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
-        <div class="absolute inset-0 bg-dark-text/40 backdrop-blur-sm" id="mobileDrawerClose"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-sage-card shadow-2xl p-6 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-6 border-b border-sage-border">
-                    <span class="font-display font-bold text-xl text-sage-dark">Navigation</span>
-                    <button class="w-8 h-8 rounded-full bg-sage-surface flex items-center justify-center text-dark-text hover:bg-sage-dark hover:text-white transition-colors" onclick="document.getElementById('mobileNavDrawer').classList.add('translate-x-full')">
-                        <i class="fa-solid fa-xmark text-sm"></i>
-                    </button>
-                </div>
-                <ul class="mt-6 space-y-4 font-display font-semibold text-lg">
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="0">01. Hero Identity</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="1">02. About Me & Metrics</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="2">03. Recent Work Demos</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="3">04. My Services</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="4">05. Featured Best Work</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="5">06. 20+ Themes Catalog & Skills</button></li>
-                    <li><button class="mobile-nav-link text-left w-full hover:text-sage-accent transition-colors" data-zone-index="6">07. Contact & Connect</button></li>
+    <div id="fullNavOverlay" class="fixed inset-0 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-out flex items-center justify-center">
+        <!-- Backdrop Blur Layer -->
+        <div class="absolute inset-0 bg-[#192217]/95 backdrop-blur-2xl transition-all duration-400" id="fullNavBackdrop"></div>
+        
+        <!-- Inner Container -->
+        <div class="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-12 py-8 h-full flex flex-col justify-between overflow-y-auto">
+            
+            <!-- Top Bar inside Overlay: Brand Logo & Close Button (Navigation Index removed) -->
+            <div class="flex items-center justify-between pb-6 border-b border-white/10 nav-stagger-item">
+                <span class="font-display font-bold text-lg text-white tracking-tight">TUAN PHAN<span class="text-emerald-400">.</span></span>
+                <button id="fullNavClose" class="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white hover:bg-white hover:text-dark-text transition-all text-sm shadow-md group" aria-label="Close Menu">
+                    <i class="fa-solid fa-xmark group-hover:rotate-90 transition-transform duration-300"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Links List (Staggered Left-to-Right Reveal with Compact Typography) -->
+            <div class="my-auto py-6">
+                <ul class="space-y-3 sm:space-y-4" id="navStaggerList">
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="0">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">01</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Hero & Identity</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="1">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">02</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">About Me & Metrics</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="2">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">03</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Recent Work & Live Demos</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="3">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">04</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Core Services & Expertise</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="4">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">05</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Featured Showcase</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="5">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">06</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">20+ Themes Catalog & Skills</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="6">
+                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">07</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Contact & Connect</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
 
-            <div class="pt-6 border-t border-sage-border">
-                <p class="text-xs text-muted-text font-medium mb-3">GET IN TOUCH DIRECTLY</p>
-                <a href="mailto:pntuan6511@gmail.com" class="block font-semibold text-sage-dark hover:underline text-sm mb-1">pntuan6511@gmail.com</a>
-                <a href="tel:0976636511" class="block text-xs text-muted-text hover:text-dark-text">+84 976 636 511</a>
+            <!-- Bottom Contact & Social Strip inside Overlay -->
+            <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 nav-stagger-item">
+                <div class="flex flex-wrap items-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/80">
+                    <a href="mailto:pntuan6511@gmail.com" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-envelope"></i> pntuan6511@gmail.com</a>
+                    <a href="tel:0976636511" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-phone"></i> +84 976 636 511</a>
+                    <span>Long Xuyen, Vietnam</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="https://github.com/pntuan-dev" target="_blank" class="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-emerald-400 hover:text-dark-text transition-all text-sm" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="px-4 py-2 rounded-full bg-emerald-500 text-dark-text font-bold text-xs hover:bg-white transition-all shadow-md">Resume PDF</a>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -192,9 +242,8 @@
                                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                 <span>Software Engineer</span>
                             </div>
-                            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-dark-text tracking-tight leading-[1.05]">
-                                Phan<br/>
-                                <span class="text-sage-dark underline decoration-sage-accent/40 underline-offset-8">Ngoc Tuan</span>
+                            <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-dark-text tracking-tight leading-tight">
+                                Phan <span class="text-sage-dark underline decoration-sage-accent/40 underline-offset-8">Ngoc Tuan</span>
                             </h1>
                         </div>
 
