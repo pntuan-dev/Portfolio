@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimation();
   initRecentWorkSlider();
   initServicesAccordion();
-  initThemeFilter();
+  initThemeArcSlider();
   initMobileDrawer();
   initBackToTop();
 });
@@ -357,31 +357,166 @@ function initServicesAccordion() {
 }
 
 /* ==========================================================================
-   5. THEME WEB FILTER ENGINE
+   5. THEME STOREFRONTS 3D CURVED ARC COVERFLOW CAROUSEL & FILTER ENGINE
    ========================================================================== */
-function initThemeFilter() {
-  const filterBtns = document.querySelectorAll('.theme-filter-btn');
-  const themeCards = document.querySelectorAll('.theme-catalog-card');
-  if (filterBtns.length === 0 || themeCards.length === 0) return;
+function initThemeArcSlider() {
+  const stage = document.getElementById('themeArcCarouselStage');
+  const prevBtn = document.getElementById('themeSliderPrevBtn');
+  const nextBtn = document.getElementById('themeSliderNextBtn');
+  const pagination = document.getElementById('themeSliderPagination');
+  const filterBtns = document.querySelectorAll('.theme-arc-filter-btn');
+  if (!stage) return;
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('active', 'bg-sage-dark', 'text-white'));
-      btn.classList.add('active', 'bg-sage-dark', 'text-white');
+  const allCards = Array.from(stage.querySelectorAll('.theme-arc-card'));
+  if (allCards.length === 0) return;
 
-      const filter = btn.getAttribute('data-filter');
+  let currentCategory = 'all';
+  let filteredCards = [...allCards];
+  let activeIndex = 0;
 
-      themeCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-          card.classList.add('animate-fade-in');
+  function renderPagination() {
+    if (!pagination) return;
+    pagination.innerHTML = '';
+    const total = filteredCards.length;
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.className = `slider-pagination-dot ${i === activeIndex ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Go to theme ${i + 1}`);
+      dot.addEventListener('click', () => {
+        activeIndex = i;
+        updateThemeArcCarousel();
+      });
+      pagination.appendChild(dot);
+    }
+  }
+
+  function updateThemeArcCarousel() {
+    const total = filteredCards.length;
+    if (total === 0) return;
+
+    // First hide all cards not in current filter
+    allCards.forEach((card) => {
+      if (!filteredCards.includes(card)) {
+        card.style.display = 'none';
+        card.classList.remove('active', 'prev-1', 'next-1', 'prev-2', 'next-2', 'hidden-left', 'hidden-right');
+      } else {
+        card.style.display = 'block';
+      }
+    });
+
+    filteredCards.forEach((card, index) => {
+      const offset = (index - activeIndex + total) % total;
+      
+      card.classList.remove('active', 'prev-1', 'next-1', 'prev-2', 'next-2', 'hidden-left', 'hidden-right');
+
+      if (offset === 0) {
+        card.classList.add('active');
+      } else if (offset === 1) {
+        card.classList.add('next-1');
+      } else if (offset === 2) {
+        card.classList.add('next-2');
+      } else if (offset === total - 1) {
+        card.classList.add('prev-1');
+      } else if (offset === total - 2) {
+        card.classList.add('prev-2');
+      } else if (offset > 2 && offset <= total / 2) {
+        card.classList.add('hidden-right');
+      } else {
+        card.classList.add('hidden-left');
+      }
+    });
+
+    if (pagination) {
+      const dots = pagination.querySelectorAll('.slider-pagination-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
         } else {
-          card.style.display = 'none';
+          dot.classList.remove('active');
         }
       });
+    }
+  }
+
+  function applyCategoryFilter(cat) {
+    currentCategory = cat;
+    if (cat === 'all') {
+      filteredCards = [...allCards];
+    } else {
+      filteredCards = allCards.filter((card) => card.getAttribute('data-category') === cat);
+    }
+    activeIndex = 0;
+    renderPagination();
+    updateThemeArcCarousel();
+  }
+
+  // Filter Buttons click handler
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.classList.remove('active', 'bg-sage-dark', 'text-white');
+        b.classList.add('bg-sage-surface', 'text-sage-dark');
+      });
+      btn.classList.add('active', 'bg-sage-dark', 'text-white');
+      btn.classList.remove('bg-sage-surface', 'text-sage-dark');
+
+      const filter = btn.getAttribute('data-filter') || 'all';
+      applyCategoryFilter(filter);
     });
   });
+
+  // Card click to activate
+  allCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const idxInFiltered = filteredCards.indexOf(card);
+      if (idxInFiltered !== -1 && idxInFiltered !== activeIndex) {
+        activeIndex = idxInFiltered;
+        updateThemeArcCarousel();
+      }
+    });
+  });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const total = filteredCards.length;
+      if (total === 0) return;
+      activeIndex = (activeIndex - 1 + total) % total;
+      updateThemeArcCarousel();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const total = filteredCards.length;
+      if (total === 0) return;
+      activeIndex = (activeIndex + 1) % total;
+      updateThemeArcCarousel();
+    });
+  }
+
+  // Touch Swipe for Mobile
+  let startX = 0;
+  let currentX = 0;
+  stage.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  stage.addEventListener('touchend', (e) => {
+    currentX = e.changedTouches[0].clientX;
+    const diff = startX - currentX;
+    const total = filteredCards.length;
+    if (total === 0) return;
+    if (diff > 45) {
+      activeIndex = (activeIndex + 1) % total;
+      updateThemeArcCarousel();
+    } else if (diff < -45) {
+      activeIndex = (activeIndex - 1 + total) % total;
+      updateThemeArcCarousel();
+    }
+  });
+
+  renderPagination();
+  updateThemeArcCarousel();
 }
 
 
