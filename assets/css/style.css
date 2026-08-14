@@ -2,7 +2,7 @@
    PHAN NGOC TUAN - LUXURY SAGE GREEN PORTFOLIO STYLESHEET
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap');
 
 :root {
   --color-bg-light: #f4f6f3;
@@ -16,7 +16,7 @@
   --color-dark-text: #1b221a;
   --color-muted-text: #61715d;
   --color-footer-bg: #1e261c;
-  --font-display: 'Roboto', sans-serif;
+  --font-display: 'Be Vietnam Pro', sans-serif;
   --font-body: 'Roboto', sans-serif;
 }
 
@@ -49,7 +49,7 @@ body {
 
 /* --- Hero Magazine Typography (Matching Reference Image) --- */
 .hero-magazine-title {
-  font-family: 'Syne', 'Roboto', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 800;
   color: #5c7255;
   letter-spacing: -0.04em;
@@ -320,51 +320,54 @@ body {
 }
 
 /* ==========================================================================
-   PROFILE TICKER CAROUSEL
+   PROFILE TICKER CAROUSEL (ACCURATE PIXEL PRECISION)
    ========================================================================== */
 .profile-ticker-wrapper {
-  height: 1.75rem;
+  height: 26px;
   overflow: hidden;
-  display: inline-block;
+  display: block;
+  position: relative;
 }
 
 .profile-ticker-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  animation: tickerVertical 14s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation: tickerVertical 15s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 .profile-ticker-item {
-  height: 1.75rem;
+  height: 26px;
+  line-height: 26px;
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
 
 @keyframes tickerVertical {
-  0%, 16% { transform: translateY(0); }
-  20%, 36% { transform: translateY(-16.666%); }
-  40%, 56% { transform: translateY(-33.333%); }
-  60%, 76% { transform: translateY(-50%); }
-  80%, 96% { transform: translateY(-66.666%); }
-  100% { transform: translateY(-83.333%); }
+  0%, 14% { transform: translateY(0); }
+  17%, 31% { transform: translateY(-26px); }
+  34%, 48% { transform: translateY(-52px); }
+  51%, 65% { transform: translateY(-78px); }
+  68%, 82% { transform: translateY(-104px); }
+  85%, 98% { transform: translateY(-130px); }
+  100% { transform: translateY(-130px); }
 }
 
 /* ==========================================================================
-   GITHUB TOOLTIP & POPUPS
+   GITHUB & EMAIL TOOLTIP & POPUPS
    ========================================================================== */
 .github-social-wrapper {
   position: relative;
+  display: inline-flex;
 }
 
 .github-hover-tooltip {
   position: absolute;
   bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%) translateY(5px);
+  right: 0;
   background-color: var(--color-sage-dark);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
   padding: 0.4rem 0.3rem;
   display: flex;
@@ -374,22 +377,24 @@ body {
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   min-width: 190px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  z-index: 100;
+  max-width: 85vw;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transform: translateY(6px);
 }
 
-.github-social-wrapper:hover .github-hover-tooltip {
+.github-social-wrapper:hover .github-hover-tooltip,
+.github-social-wrapper:focus-within .github-hover-tooltip {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .github-hover-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 14px;
   border: 6px solid transparent;
   border-top-color: var(--color-sage-dark);
 }
@@ -398,12 +403,12 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 0.375rem;
-  color: #e2e8df;
-  font-size: 0.72rem;
-  text-decoration: none;
-  transition: all 0.15s ease;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: monospace;
+  transition: background-color 0.15s ease;
   white-space: nowrap;
 }
 
