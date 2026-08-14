@@ -12,12 +12,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initZoneSnapScroll();
   initFloatingDotNav();
+  initCounterAnimation();
   initRecentWorkSlider();
   initServicesAccordion();
   initThemeFilter();
-  initQrModal();
   initMobileDrawer();
   initBackToTop();
 });
@@ -377,30 +378,7 @@ function initThemeFilter() {
   });
 }
 
-/* ==========================================================================
-   6. INTERACTIVE QR CODE MODAL
-   ========================================================================== */
-function initQrModal() {
-  const qrTrigger = document.getElementById('qrModalTrigger');
-  const qrModal = document.getElementById('qrModal');
-  const qrCloseBtn = document.getElementById('qrModalClose');
-  if (!qrTrigger || !qrModal) return;
 
-  qrTrigger.addEventListener('click', () => {
-    qrModal.classList.remove('hidden');
-    qrModal.classList.add('flex');
-  });
-
-  const closeModal = () => {
-    qrModal.classList.add('hidden');
-    qrModal.classList.remove('flex');
-  };
-
-  if (qrCloseBtn) qrCloseBtn.addEventListener('click', closeModal);
-  qrModal.addEventListener('click', (e) => {
-    if (e.target === qrModal) closeModal();
-  });
-}
 
 /* ==========================================================================
    7. FULLSCREEN OVERLAY NAVIGATION CONTROLLER
@@ -471,4 +449,113 @@ function initBackToTop() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   9. NUMERICAL COUNTER ANIMATION ENGINE (SMOOTH EASE-OUT CUBIC)
+   ========================================================================== */
+function animateValue(el, target, duration = 1400, suffix = '', format = '') {
+  const start = 0;
+  const startTime = performance.now();
+
+  function updateCounter(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out cubic for silky smooth deceleration
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const currentVal = Math.floor(start + (target - start) * easeProgress);
+
+    let displayVal = currentVal.toString();
+    if (format === 'comma') {
+      displayVal = currentVal.toLocaleString('en-US');
+    }
+
+    el.textContent = displayVal + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
+    } else {
+      let finalVal = target.toString();
+      if (format === 'comma') {
+        finalVal = target.toLocaleString('en-US');
+      }
+      el.textContent = finalVal + suffix;
+    }
+  }
+
+  requestAnimationFrame(updateCounter);
+}
+
+function initCounterAnimation() {
+  const counterElements = document.querySelectorAll('.counter-val');
+  if (counterElements.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          const suffix = el.getAttribute('data-suffix') || '';
+          const format = el.getAttribute('data-format') || '';
+          if (!isNaN(target)) {
+            animateValue(el, target, 1500, suffix, format);
+          }
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  counterElements.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================================================
+   10. LUXURY EDITORIAL PRELOADER CONTROLLER
+   ========================================================================== */
+function initPreloader() {
+  const preloader = document.getElementById('sitePreloader');
+  const counter = document.getElementById('preloaderCounter');
+  const progressBar = document.getElementById('preloaderProgressBar');
+  if (!preloader) return;
+
+  // Lock scrolling while preloading
+  document.body.style.overflow = 'hidden';
+
+  const DURATION = 1200; // Exactly 1.2s
+  const startTime = performance.now();
+
+  function updateProgress(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / DURATION, 1);
+    const percent = Math.floor(progress * 100);
+
+    if (counter) counter.textContent = percent + '%';
+    if (progressBar) progressBar.style.width = percent + '%';
+
+    if (progress < 1) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      if (counter) counter.textContent = '100%';
+      if (progressBar) progressBar.style.width = '100%';
+
+      // Smooth slide up exit transition after exactly 1.2s
+      setTimeout(() => {
+        preloader.classList.add('preloader-hidden');
+        document.body.style.overflow = '';
+
+        // Trigger floating dot initial brief label
+        if (typeof showDotLabelBriefly === 'function') {
+          showDotLabelBriefly(0);
+        }
+
+        setTimeout(() => {
+          preloader.remove();
+        }, 700);
+      }, 100);
+    }
+  }
+
+  requestAnimationFrame(updateProgress);
 }

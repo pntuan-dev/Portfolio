@@ -520,5 +520,48 @@ body {
 #fullNavOverlay.active #navStaggerList .nav-stagger-item:nth-child(4) { transition-delay: 0.23s; }
 #fullNavOverlay.active #navStaggerList .nav-stagger-item:nth-child(5) { transition-delay: 0.28s; }
 #fullNavOverlay.active #navStaggerList .nav-stagger-item:nth-child(6) { transition-delay: 0.33s; }
-#fullNavOverlay.active #navStaggerList .nav-stagger-item:nth-child(7) { transition-delay: 0.38s; }
-#fullNavOverlay.active .nav-stagger-item:last-child { transition-delay: 0.43s; }
+#fullNavOverlay.active .nav-stagger-item:last-child { transition-delay: 0.38s; }
+
+/* ==========================================================================
+   LUXURY EDITORIAL PRELOADER ANIMATIONS
+   ========================================================================== */
+#sitePreloader {
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease-in-out;
+  will-change: transform, opacity;
+}
+
+#sitePreloader.preloader-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader-line-tuan {
+  animation: preloaderSlideLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.preloader-line-phan {
+  animation: preloaderSlideRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes preloaderSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes preloaderSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

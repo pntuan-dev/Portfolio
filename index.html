@@ -62,24 +62,76 @@
 <body class="bg-sage-bg text-dark-text font-sans antialiased selection:bg-sage-dark selection:text-white">
 
     <!-- ==========================================================================
+       LUXURY EDITORIAL PRELOADER (3-SECOND STAGGERED INTRO ANIMATION)
+       ========================================================================== -->
+    <div id="sitePreloader" class="fixed inset-0 z-[100] bg-sage-bg text-dark-text flex flex-col justify-between p-6 sm:p-12 overflow-hidden transition-all duration-700 ease-in-out">
+        <!-- Top Status Indicator -->
+        <div class="flex items-center justify-between text-xs uppercase tracking-widest text-muted-text">
+            <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sage-accent animate-pulse"></span>
+                <span class="font-bold tracking-wider text-sage-dark">Portfolio Experience</span>
+            </span>
+            <span class="font-mono text-sage-dark font-bold text-sm" id="preloaderCounter">0%</span>
+        </div>
+
+        <!-- Center Typography Showcase (Staggered Diagonal Layout - Hoàn hảo trên cả Desktop & Mobile) -->
+        <div class="my-auto w-full max-w-xs sm:max-w-lg lg:max-w-2xl mx-auto py-2">
+            <div class="relative flex flex-col justify-center select-none">
+                <!-- Line 1: TUAN (Lệch trái, trượt từ trái vào) -->
+                <div class="flex justify-start preloader-line-tuan">
+                    <span class="font-display font-black text-6xl sm:text-8xl lg:text-[8.5rem] tracking-tighter text-dark-text leading-[0.82] block">
+                        Tuan
+                    </span>
+                </div>
+
+                <!-- Line 2: PHAN (Lệch phải so le, trượt từ phải vào, sát dòng 1) -->
+                <div class="flex justify-end preloader-line-phan -mt-2 sm:-mt-4 lg:-mt-6">
+                    <span class="font-display font-black text-6xl sm:text-8xl lg:text-[8.5rem] tracking-tighter text-sage-dark leading-[0.82] block text-right">
+                        Phan
+                    </span>
+                </div>
+
+                <!-- Line 3: SOFTWARE ENGINEER (Dòng mới riêng biệt, căn phải dưới Phan) -->
+                <div class="flex justify-end pt-2 sm:pt-3 lg:pt-4 preloader-line-phan">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-sage-border text-[11px] sm:text-xs font-bold text-sage-dark shadow-xs whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Software Engineer</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Loading Progress Bar -->
+        <div class="w-full max-w-5xl mx-auto space-y-2.5">
+            <div class="w-full h-1.5 bg-sage-border/70 rounded-full overflow-hidden">
+                <div id="preloaderProgressBar" class="h-full bg-sage-dark w-0 transition-all duration-150 rounded-full"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] font-semibold text-muted-text tracking-wider uppercase">
+                <span>Enterprise SaaS & POS Systems</span>
+                <span>©2025/2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
        TOP FIXED NAVIGATION BAR
        ========================================================================== -->
     <header id="mainHeader" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 sm:h-16 flex items-center justify-between">
             <!-- Left: Menu Trigger (Mobile Drawer) & Name Brand -->
-            <div class="flex items-center gap-3">
-                <button id="mobileMenuToggle" class="w-10 h-10 rounded-full bg-white/90 border border-sage-border flex items-center justify-center text-sage-dark hover:bg-sage-dark hover:text-white transition-all shadow-sm" aria-label="Toggle Navigation Menu">
-                    <i class="fa-solid fa-bars-staggered text-sm"></i>
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <button id="mobileMenuToggle" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 border border-sage-border flex items-center justify-center text-sage-dark hover:bg-sage-dark hover:text-white transition-all shadow-sm" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars-staggered text-xs sm:text-sm"></i>
                 </button>
-                <a href="#" onclick="window.goToZone ? window.goToZone(0) : window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="font-display font-bold text-lg tracking-tight text-sage-dark hover:opacity-80 transition-opacity">
-                    TUAN PHAN<span class="text-sage-accent">.</span>
+                <a href="#" onclick="window.goToZone ? window.goToZone(0) : window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="font-display font-bold text-base sm:text-lg tracking-tight text-sage-dark hover:opacity-80 transition-opacity">
+                    TUAN PHAN
                 </a>
             </div>
 
             <!-- Right: CV Download & Year Badge -->
-            <div class="flex items-center gap-3">
-                <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-sage-dark text-white text-xs font-semibold hover:bg-sage-primary transition-all shadow-sm">
-                    <i class="fa-solid fa-file-pdf text-[11px]"></i>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-sage-dark text-white text-[11px] sm:text-xs font-semibold hover:bg-sage-primary transition-all shadow-sm">
+                    <i class="fa-solid fa-file-pdf text-[10px] sm:text-[11px]"></i>
                     <span>Resume PDF</span>
                 </a>
                 <span class="text-xs font-semibold text-muted-text hidden sm:inline-block">©2025/2026</span>
@@ -92,32 +144,28 @@
        ========================================================================== -->
     <nav class="floating-dot-nav hidden lg:flex" aria-label="Page Zones Navigator">
         <div class="floating-dot-item">
-            <span class="floating-dot-label">01. Hero Identity</span>
-            <button class="floating-dot-btn active" data-zone-index="0" data-zone-id="zone-hero" aria-label="Zone 1: Hero Identity"></button>
+            <span class="floating-dot-label">01. Hero & About Me</span>
+            <button class="floating-dot-btn active" data-zone-index="0" data-zone-id="zone-hero" aria-label="Zone 1: Hero and About"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">02. About & Metrics</span>
-            <button class="floating-dot-btn" data-zone-index="1" data-zone-id="zone-about" aria-label="Zone 2: About and Metrics"></button>
+            <span class="floating-dot-label">02. Recent Work Demos</span>
+            <button class="floating-dot-btn" data-zone-index="1" data-zone-id="zone-recent-work" aria-label="Zone 2: Recent Work Live Demos"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">03. Recent Work Demos</span>
-            <button class="floating-dot-btn" data-zone-index="2" data-zone-id="zone-recent-work" aria-label="Zone 3: Recent Work Live Demos"></button>
+            <span class="floating-dot-label">03. Core Services</span>
+            <button class="floating-dot-btn" data-zone-index="2" data-zone-id="zone-services" aria-label="Zone 3: Core Services"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">04. Core Services</span>
-            <button class="floating-dot-btn" data-zone-index="3" data-zone-id="zone-services" aria-label="Zone 4: Core Services"></button>
+            <span class="floating-dot-label">04. Featured Showcase</span>
+            <button class="floating-dot-btn" data-zone-index="3" data-zone-id="zone-showcase" aria-label="Zone 4: Featured Showcase"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">05. Featured Showcase</span>
-            <button class="floating-dot-btn" data-zone-index="4" data-zone-id="zone-showcase" aria-label="Zone 5: Featured Showcase"></button>
+            <span class="floating-dot-label">05. Themes & Skills</span>
+            <button class="floating-dot-btn" data-zone-index="4" data-zone-id="zone-catalog" aria-label="Zone 5: Themes Catalog and Skills"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">06. 20+ Themes & Skills</span>
-            <button class="floating-dot-btn" data-zone-index="5" data-zone-id="zone-catalog" aria-label="Zone 6: Themes Catalog and Skills"></button>
-        </div>
-        <div class="floating-dot-item">
-            <span class="floating-dot-label">07. Contact & Footer</span>
-            <button class="floating-dot-btn" data-zone-index="6" data-zone-id="zone-contact" aria-label="Zone 7: Contact and Footer"></button>
+            <span class="floating-dot-label">06. Contact & Footer</span>
+            <button class="floating-dot-btn" data-zone-index="5" data-zone-id="zone-contact" aria-label="Zone 6: Contact and Footer"></button>
         </div>
     </nav>
 
@@ -145,42 +193,36 @@
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="0">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">01</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Hero & Identity</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Hero & About Me</span>
                         </button>
                     </li>
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="1">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">02</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">About Me & Metrics</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Recent Work & Live Demos</span>
                         </button>
                     </li>
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="2">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">03</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Recent Work & Live Demos</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Core Services & Expertise</span>
                         </button>
                     </li>
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="3">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">04</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Core Services & Expertise</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Featured Showcase</span>
                         </button>
                     </li>
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="4">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">05</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Featured Showcase</span>
+                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">20+ Themes Catalog & Skills</span>
                         </button>
                     </li>
                     <li class="nav-stagger-item">
                         <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="5">
                             <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">06</span>
-                            <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">20+ Themes Catalog & Skills</span>
-                        </button>
-                    </li>
-                    <li class="nav-stagger-item">
-                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full" data-zone-index="6">
-                            <span class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">07</span>
                             <span class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Contact & Connect</span>
                         </button>
                     </li>
@@ -223,21 +265,21 @@
                 </span>
             </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 sm:pt-20 pb-4 flex flex-col justify-between h-full relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 sm:pt-16 pb-4 flex flex-col justify-between h-full relative z-10">
                 
                 <!-- Hero Top Subtitles -->
-                <div class="flex items-center justify-between text-xs sm:text-sm font-semibold tracking-wider uppercase text-muted-text border-b border-sage-border pb-3">
+                <div class="flex items-center justify-between text-[11px] sm:text-sm font-semibold tracking-wider uppercase text-muted-text border-b border-sage-border pb-2 sm:pb-3">
                     <span class="flex items-center gap-1.5"><i class="fa-solid fa-code text-sage-accent"></i> Software Engineer</span>
-                    <span class="hidden sm:inline-block">Fullstack & Cloud Architect</span>
+                    <span class="hidden sm:inline-block font-bold text-dark-text/80">Enterprise SaaS & POS Systems</span>
                     <span class="text-right">Since 2021 · Vietnam</span>
                 </div>
 
-                <!-- Main Hero 2-Column Editorial Showcase -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-4">
+                <!-- Main Hero 2-Column Editorial Showcase (Hero + About Me Unified) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-2">
                     
-                    <!-- Left Column: Typography Headline & Personal Bio & Actions (60%) -->
-                    <div class="lg:col-span-7 space-y-6">
-                        <div class="space-y-2">
+                    <!-- Left Column: Typography Headline & Personal Bio & Metrics (60%) -->
+                    <div class="lg:col-span-7 space-y-4 sm:space-y-5">
+                        <div class="space-y-1.5">
                             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-sage-border text-xs font-bold text-sage-dark shadow-xs">
                                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                 <span>Software Engineer</span>
@@ -247,12 +289,28 @@
                             </h1>
                         </div>
 
-                        <p class="text-base sm:text-lg text-dark-text/80 leading-relaxed font-normal max-w-xl">
+                        <p class="text-sm sm:text-base text-dark-text/85 leading-relaxed font-normal max-w-xl">
                             Results-driven Software Developer with 3+ years of expertise in <strong class="text-sage-dark font-semibold">.NET, ReactJS, NextJS, and PostgreSQL</strong>. Dedicated to building scalable POS and E-commerce solutions. Seeking a Fullstack/Backend role to contribute to innovative projects while transitioning towards a Solution Architect career path.
                         </p>
 
+                        <!-- 3 Integrated Metrics Cards (From About Me) with Counter Animation -->
+                        <div class="grid grid-cols-3 gap-2.5 sm:gap-3 max-w-xl">
+                            <div class="bg-white p-3 rounded-xl border border-sage-border shadow-xs text-center">
+                                <div class="font-display font-black text-xl sm:text-2xl text-sage-dark counter-val" data-target="3" data-suffix="+">0+</div>
+                                <div class="text-[11px] font-bold text-muted-text uppercase tracking-tight">Years Exp</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-sage-border shadow-xs text-center">
+                                <div class="font-display font-black text-xl sm:text-2xl text-sage-dark counter-val" data-target="1000" data-suffix="+" data-format="comma">0+</div>
+                                <div class="text-[11px] font-bold text-muted-text uppercase tracking-tight">Active Users</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-sage-border shadow-xs text-center">
+                                <div class="font-display font-black text-xl sm:text-2xl text-sage-dark counter-val" data-target="25" data-suffix="+">0+</div>
+                                <div class="text-[11px] font-bold text-muted-text uppercase tracking-tight">Projects</div>
+                            </div>
+                        </div>
+
                         <!-- Live Ticker & Info Box (Mobile Optimized Flex Row) -->
-                        <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-sage-border shadow-sm max-w-xl">
+                        <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-sage-border shadow-sm max-w-xl">
                             <div class="flex items-center justify-between gap-3">
                                 <div class="min-w-0 flex-1">
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-muted-text block mb-0.5">Current Focus & Coordinates</span>
@@ -290,11 +348,11 @@
                         </div>
 
                         <!-- CTA Actions -->
-                        <div class="flex flex-wrap items-center gap-3 pt-1">
-                            <button onclick="window.goToZone ? window.goToZone(2) : null" class="px-6 py-3 rounded-full bg-sage-dark text-white text-xs sm:text-sm font-semibold hover:bg-sage-primary hover:shadow-lg transition-all flex items-center gap-2">
+                        <div class="flex flex-wrap items-center gap-3 pt-0.5">
+                            <button onclick="window.goToZone ? window.goToZone(1) : null" class="px-5 py-2.5 rounded-full bg-sage-dark text-white text-xs sm:text-sm font-semibold hover:bg-sage-primary hover:shadow-lg transition-all flex items-center gap-2">
                                 <span>Explore Recent Work</span> <i class="fa-solid fa-arrow-right text-xs"></i>
                             </button>
-                            <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="px-5 py-3 rounded-full bg-white border border-sage-border text-sage-dark text-xs sm:text-sm font-semibold hover:bg-sage-surface transition-all flex items-center gap-2 shadow-xs">
+                            <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="px-4 py-2.5 rounded-full bg-white border border-sage-border text-sage-dark text-xs sm:text-sm font-semibold hover:bg-sage-surface transition-all flex items-center gap-2 shadow-xs">
                                 <i class="fa-solid fa-download text-xs text-sage-accent"></i> <span>Download Resume</span>
                             </a>
                         </div>
@@ -307,12 +365,6 @@
                             <!-- Main Portrait Image -->
                             <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-sage-dark shadow-2xl border border-sage-border/80 group">
                                 <img src="assets/images/hero_portrait.jpg" alt="Phan Ngoc Tuan - Software Engineer" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
-                                
-                                <!-- Interactive QR Code Floating Button -->
-                                <button id="qrModalTrigger" class="absolute top-4 right-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl hover:scale-110 hover:bg-white transition-all text-sage-dark border border-sage-border group/qr" title="Scan to connect on Mobile">
-                                    <i class="fa-solid fa-qrcode text-2xl group-hover/qr:text-sage-accent transition-colors"></i>
-                                    <span class="sr-only">Scan QR Code</span>
-                                </button>
 
                                 <!-- Bottom Status Bar on Image -->
                                 <div class="absolute bottom-4 left-4 right-4 bg-dark-text/80 backdrop-blur-md rounded-2xl p-3.5 border border-white/10 text-white flex items-center justify-between">
@@ -321,7 +373,7 @@
                                         <div class="text-xs font-semibold text-white/90">Enterprise POS & ERP Systems</div>
                                     </div>
                                     <span class="text-xs px-2.5 py-1 rounded-full bg-sage-accent/40 border border-sage-accent text-white font-bold">
-                                        3+ Yrs Exp
+                                        <span class="counter-val" data-target="3" data-suffix="+">0+</span> Yrs Exp
                                     </span>
                                 </div>
                             </div>
@@ -332,82 +384,16 @@
                 </div>
 
                 <!-- Hero Bottom Bar -->
-                <div class="flex items-center justify-between text-xs text-muted-text pt-3 border-t border-sage-border">
+                <div class="flex items-center justify-between text-xs text-muted-text pt-2.5 border-t border-sage-border">
                     <span class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-sage-accent"></span>
                         High-Throughput Web Platforms & Multi-tenant Architecture
                     </span>
                     <button onclick="window.goToZone ? window.goToZone(1) : null" class="hover:text-sage-dark font-semibold transition-colors flex items-center gap-1">
-                        View Overview <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                        Explore Works <i class="fa-solid fa-arrow-down text-[10px]"></i>
                     </button>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           ZONE 2: ABOUT ME & METRICS
-           ========================================================================== -->
-        <section id="zone-about" class="zone-section bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                    
-                    <!-- Left: Editorial Heading & Bio -->
-                    <div class="lg:col-span-6 space-y-6">
-                        <div>
-                            <span class="text-xs font-bold uppercase tracking-widest text-sage-accent">02 / Overview</span>
-                            <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-dark-text mt-1">About Me</h2>
-                        </div>
-                        <p class="text-base sm:text-lg leading-relaxed text-dark-text/80 font-normal">
-                            I am a passionate <strong class="text-sage-dark font-bold">Software Engineer</strong> with over 3 years of hands-on experience designing and implementing large-scale web applications, cloud enterprise ERPs, and POS management systems.
-                        </p>
-                        <p class="text-sm sm:text-base leading-relaxed text-muted-text">
-                            At <strong class="text-dark-text font-semibold">Bado</strong>, I have contributed directly to core architecture and feature modules serving over <span class="px-2 py-0.5 rounded bg-sage-surface text-sage-dark font-bold">1,000+ active business users</span>, optimizing backend database throughput and delivering responsive frontend interfaces.
-                        </p>
-                        <p class="text-sm sm:text-base leading-relaxed text-muted-text">
-                            My long-term career milestone is to advance as a <span class="text-sage-dark font-bold underline decoration-sage-accent/50 underline-offset-4">Solution Architect</span>, building resilient, scalable, and cost-effective digital infrastructures that generate sustainable business value.
-                        </p>
-                        <div class="pt-2 flex flex-wrap items-center gap-4">
-                            <a href="assets/resource/PhanNgocTuan_Associateengineer_Resume.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sage-dark text-white font-semibold text-sm hover:bg-sage-primary hover:shadow-lg transition-all">
-                                <i class="fa-solid fa-download text-xs"></i> Download Curriculum Vitae
-                            </a>
-                            <button onclick="window.goToZone ? window.goToZone(2) : null" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sage-surface text-sage-dark font-semibold text-sm hover:bg-sage-border transition-all">
-                                View Recent Works <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Right: 3 Big Metrics Cards (Matching reference layout) -->
-                    <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="luxury-card p-6 bg-sage-bg border-sage-border flex flex-col justify-between h-48">
-                            <span class="text-xs font-bold uppercase tracking-wider text-muted-text">Experience</span>
-                            <div>
-                                <div class="font-display font-extrabold text-5xl text-sage-dark">3+</div>
-                                <div class="text-sm font-semibold text-dark-text mt-1">Years in Industry</div>
-                            </div>
-                            <p class="text-xs text-muted-text">Enterprise SaaS & POS</p>
-                        </div>
-
-                        <div class="luxury-card p-6 bg-sage-bg border-sage-border flex flex-col justify-between h-48">
-                            <span class="text-xs font-bold uppercase tracking-wider text-muted-text">User Scale</span>
-                            <div>
-                                <div class="font-display font-extrabold text-5xl text-sage-dark">1K+</div>
-                                <div class="text-sm font-semibold text-dark-text mt-1">Active Users</div>
-                            </div>
-                            <p class="text-xs text-muted-text">Across Multi-branches</p>
-                        </div>
-
-                        <div class="luxury-card p-6 bg-sage-bg border-sage-border flex flex-col justify-between h-48">
-                            <span class="text-xs font-bold uppercase tracking-wider text-muted-text">Portfolio</span>
-                            <div>
-                                <div class="font-display font-extrabold text-5xl text-sage-dark">25+</div>
-                                <div class="text-sm font-semibold text-dark-text mt-1">Projects & Themes</div>
-                            </div>
-                            <p class="text-xs text-muted-text">100% Production Ready</p>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </section>
 
@@ -883,8 +869,8 @@
                 
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-sage-border pb-3 gap-3">
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-sage-accent">06 / Full Catalog & Technical Arsenal</span>
-                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-dark-text mt-1">20+ Themes & Skills Stack</h2>
+                        <span class="text-xs font-bold uppercase tracking-widest text-sage-accent">05 / Full Catalog & Technical Arsenal</span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-dark-text mt-1"><span class="counter-val" data-target="20" data-suffix="+">0+</span> Themes & Skills Stack</h2>
                     </div>
 
                     <!-- Category Filter Tabs -->
@@ -1122,70 +1108,6 @@
         </section>
 
     </main>
-
-    <!-- ==========================================================================
-       QR CODE FULLSCREEN MODAL
-       ========================================================================== -->
-    <div id="qrModal" class="fixed inset-0 z-50 bg-dark-text/70 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl relative border border-sage-border">
-            <button id="qrModalClose" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-sage-surface flex items-center justify-center text-dark-text hover:bg-sage-dark hover:text-white transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="w-12 h-12 rounded-2xl bg-sage-surface mx-auto flex items-center justify-center text-sage-dark mb-4">
-                <i class="fa-solid fa-qrcode text-2xl"></i>
-            </div>
-            <h3 class="font-display font-bold text-xl text-dark-text">Phan Ngoc Tuan</h3>
-            <p class="text-xs text-muted-text mt-1">Scan with camera to connect on mobile</p>
-            
-            <div class="my-6 p-4 rounded-2xl bg-sage-bg border border-sage-border inline-block">
-                <!-- High-res SVG QR Visual -->
-                <svg class="w-44 h-44 mx-auto text-sage-dark" viewBox="0 0 100 100" fill="currentColor">
-                    <!-- Standard QR corner markers & aesthetic matrix pattern -->
-                    <rect x="5" y="5" width="25" height="25" rx="4" fill="#344230"/>
-                    <rect x="9" y="9" width="17" height="17" rx="2" fill="#f4f6f3"/>
-                    <rect x="13" y="13" width="9" height="9" rx="1" fill="#344230"/>
-                    
-                    <rect x="70" y="5" width="25" height="25" rx="4" fill="#344230"/>
-                    <rect x="74" y="9" width="17" height="17" rx="2" fill="#f4f6f3"/>
-                    <rect x="78" y="13" width="9" height="9" rx="1" fill="#344230"/>
-                    
-                    <rect x="5" y="70" width="25" height="25" rx="4" fill="#344230"/>
-                    <rect x="9" y="74" width="17" height="17" rx="2" fill="#f4f6f3"/>
-                    <rect x="13" y="78" width="9" height="9" rx="1" fill="#344230"/>
-                    
-                    <!-- Decorative matrix dots -->
-                    <rect x="36" y="8" width="6" height="6" rx="1"/>
-                    <rect x="48" y="8" width="6" height="6" rx="1"/>
-                    <rect x="58" y="8" width="6" height="6" rx="1"/>
-                    <rect x="36" y="20" width="6" height="6" rx="1"/>
-                    <rect x="48" y="20" width="6" height="6" rx="1"/>
-                    <rect x="8" y="36" width="6" height="6" rx="1"/>
-                    <rect x="20" y="36" width="6" height="6" rx="1"/>
-                    <rect x="36" y="36" width="28" height="28" rx="3" fill="#5b7354"/>
-                    <rect x="70" y="36" width="6" height="6" rx="1"/>
-                    <rect x="84" y="36" width="6" height="6" rx="1"/>
-                    <rect x="8" y="48" width="6" height="6" rx="1"/>
-                    <rect x="70" y="48" width="6" height="6" rx="1"/>
-                    <rect x="84" y="48" width="6" height="6" rx="1"/>
-                    <rect x="36" y="72" width="6" height="6" rx="1"/>
-                    <rect x="48" y="72" width="6" height="6" rx="1"/>
-                    <rect x="60" y="72" width="6" height="6" rx="1"/>
-                    <rect x="74" y="72" width="6" height="6" rx="1"/>
-                    <rect x="86" y="72" width="6" height="6" rx="1"/>
-                    <rect x="36" y="84" width="6" height="6" rx="1"/>
-                    <rect x="48" y="84" width="6" height="6" rx="1"/>
-                    <rect x="60" y="84" width="6" height="6" rx="1"/>
-                    <rect x="74" y="84" width="6" height="6" rx="1"/>
-                    <rect x="86" y="84" width="6" height="6" rx="1"/>
-                </svg>
-            </div>
-
-            <div class="space-y-2 text-xs">
-                <p class="font-medium text-dark-text">Email: <a href="mailto:pntuan6511@gmail.com" class="text-sage-dark font-bold hover:underline">pntuan6511@gmail.com</a></p>
-                <p class="font-medium text-dark-text">Phone / Zalo: <a href="tel:0976636511" class="text-sage-dark font-bold hover:underline">0976636511</a></p>
-            </div>
-        </div>
-    </div>
 
     <!-- Main JavaScript -->
     <script src="assets/js/main.js"></script>
