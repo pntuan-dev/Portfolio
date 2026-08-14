@@ -100,17 +100,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Loading Progress Bar -->
-        <div class="w-full max-w-5xl mx-auto space-y-2.5">
-            <div class="w-full h-1.5 bg-sage-border/70 rounded-full overflow-hidden">
-                <div id="preloaderProgressBar" class="h-full bg-sage-dark w-0 transition-all duration-150 rounded-full"></div>
-            </div>
-            <div class="flex items-center justify-between text-[11px] font-semibold text-muted-text tracking-wider uppercase">
-                <span>Enterprise SaaS & POS Systems</span>
-                <span>©2025/2026</span>
-            </div>
-        </div>
     </div>
 
     <!-- ==========================================================================
@@ -366,15 +355,24 @@
                             <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-sage-dark shadow-2xl border border-sage-border/80 group">
                                 <img src="assets/images/hero_portrait.jpg" alt="Phan Ngoc Tuan - Software Engineer" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
 
-                                <!-- Bottom Status Bar on Image -->
-                                <div class="absolute bottom-4 left-4 right-4 bg-dark-text/80 backdrop-blur-md rounded-2xl p-3.5 border border-white/10 text-white flex items-center justify-between">
-                                    <div>
-                                        <div class="text-[11px] uppercase tracking-wider text-sage-light font-bold">Solutions Architect Aspirant</div>
-                                        <div class="text-xs font-semibold text-white/90">Enterprise POS & ERP Systems</div>
+                                <!-- Bottom Status Floating Island on Image (Modern Glassmorphism) -->
+                                <div class="absolute bottom-3.5 left-3.5 right-3.5 sm:bottom-4 sm:left-4 sm:right-4 bg-dark-text/85 backdrop-blur-xl rounded-2xl p-3 sm:p-3.5 border border-white/15 text-white shadow-[0_12px_32px_rgba(0,0,0,0.35)] flex items-center justify-between transition-all duration-300 group-hover:border-emerald-400/30 group-hover:bg-dark-text/90">
+                                    <div class="space-y-0.5">
+                                        <div class="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                                            <span class="relative flex h-2 w-2">
+                                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                            </span>
+                                            <span>Enterprise Solutions</span>
+                                        </div>
+                                        <div class="text-xs sm:text-[13px] font-bold text-white tracking-tight">
+                                            SaaS & POS Architect
+                                        </div>
                                     </div>
-                                    <span class="text-xs px-2.5 py-1 rounded-full bg-sage-accent/40 border border-sage-accent text-white font-bold">
-                                        <span class="counter-val" data-target="3" data-suffix="+">0+</span> Yrs Exp
-                                    </span>
+                                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white backdrop-blur-md shadow-inner">
+                                        <i class="fa-solid fa-code-commit text-[11px] text-emerald-400"></i>
+                                        <span class="text-xs font-black tracking-tight"><span class="counter-val" data-target="3" data-suffix="+">0+</span> Yrs Exp</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -398,254 +396,287 @@
         </section>
 
         <!-- ==========================================================================
-           ZONE 3: RECENT WORK (INTERACTIVE SLIDER WITH LIVE DEMOS)
+           ZONE 2: RECENT WORK (3D CURVED ARC COVERFLOW CAROUSEL)
            ========================================================================== -->
-        <section id="zone-recent-work" class="zone-section bg-sage-bg relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+        <section id="zone-recent-work" class="zone-section bg-sage-bg relative overflow-hidden flex flex-col justify-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-4">
                 
-                <!-- Section Header with Slider Navigation Buttons -->
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-sage-border gap-4">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-sage-accent">03 / Production Works</span>
-                        <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-dark-text mt-1">Recent Work</h2>
-                        <p class="text-sm text-muted-text mt-1">Interactive showcase of live enterprise systems & web applications.</p>
-                    </div>
-                    <!-- Slider Navigation Controllers -->
-                    <div class="flex items-center gap-3">
-                        <button id="sliderPrevBtn" class="slider-nav-btn" aria-label="Previous Slide">
-                            <i class="fa-solid fa-arrow-left text-sm"></i>
-                        </button>
-                        <button id="sliderNextBtn" class="slider-nav-btn" aria-label="Next Slide">
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </button>
-                    </div>
+                <!-- Section Header (Centered Editorial Style matching reference) -->
+                <div class="text-center max-w-2xl mx-auto mb-4 sm:mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sage-accent block mb-1">02 / Selected Works</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-dark-text tracking-tight">Recent Work</h2>
+                    <p class="text-xs sm:text-sm text-muted-text mt-1.5 leading-relaxed font-normal">
+                        Whether you need a high-performance ERP, a functional web application, or custom digital solutions, I engineer systems that align with your vision.
+                    </p>
                 </div>
 
-                <!-- Slider Container -->
-                <div class="slider-container">
-                    <div id="recentWorkTrack" class="slider-track gap-0">
+                <!-- 3D Curved Arc Carousel Stage (Panorama 5-Cards Stage) -->
+                <div class="relative w-full max-w-7xl mx-auto py-2">
+                    
+                    <!-- Navigation Arrows (To Rõ & Dễ Bấm) -->
+                    <button id="sliderPrevBtn" class="arc-nav-btn arc-prev-btn absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-40" aria-label="Previous Slide">
+                        <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+                    </button>
+                    <button id="sliderNextBtn" class="arc-nav-btn arc-next-btn absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-40" aria-label="Next Slide">
+                        <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+                    </button>
+
+                    <!-- Arc Carousel Stage -->
+                    <div id="arcCarouselStage" class="arc-carousel-stage">
                         
-                        <!-- Slide 1: RetailCore Admin Dashboard -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/retail_core_demo.jpg" alt="RetailCore & Admin Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        Enterprise SaaS
+                        <!-- Arc Card 1: RetailCore Admin Dashboard -->
+                        <div class="arc-card active" data-index="0">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <!-- Browser Header Bar -->
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                                     </div>
-                                    <a href="https://mabo.bado.vn" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>Launch Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">mabo.bado.vn</span>
+                                    <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Enterprise SaaS</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/retail_core_demo.jpg" alt="RetailCore Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://mabo.bado.vn" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>Launch Live Platform</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a>
                                 </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
                                     <div>
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">RetailCore Admin</h3>
-                                            <span class="text-xs text-muted-text font-mono">mabo.bado.vn</span>
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">RetailCore Management</h3>
+                                            <a href="https://mabo.bado.vn" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                                         </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            Centralized management system: Products, customer CRM, multi-branch warehouses, and real-time POS sync.
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Multi-branch enterprise ERP: Product inventory, CRM, realtime POS synchronization, and financial analytics.
                                         </p>
                                     </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
-                                            <span class="tag-sage">C# / ASP.NET</span>
-                                            <span class="tag-sage">ABP Framework</span>
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="tag-sage">C# / .NET</span>
                                             <span class="tag-sage">ReactJS</span>
-                                        </div>
-                                        <a href="https://mabo.bado.vn" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Open <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 2: RetailFnb & POS -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/project_fnb.jpg" alt="RetailFnb & POS System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        F&B Management
-                                    </div>
-                                    <a href="https://fnb.bado.vn" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>Launch Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                                    </a>
-                                </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
-                                    <div>
-                                        <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">RetailFnb & POS</h3>
-                                            <span class="text-xs text-muted-text font-mono">fnb.bado.vn</span>
-                                        </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            Specialized cloud POS for restaurants and coffee shops with real-time floor plan tables and kitchen order tickets.
-                                        </p>
-                                    </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
-                                            <span class="tag-sage">ASP.NET Core</span>
                                             <span class="tag-sage">PostgreSQL</span>
-                                            <span class="tag-sage">React</span>
                                         </div>
-                                        <a href="https://fnb.bado.vn" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Open <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                        </a>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">1,000+ Users</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 3: Vinfast 3S An Giang -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/project_vinfast.jpg" alt="Vinfast 3S An Giang" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        Corporate Performance
+                        <!-- Arc Card 2: Bado FnB Management -->
+                        <div class="arc-card next-1" data-index="1">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                                     </div>
-                                    <a href="https://vinfast3s-angiang.com" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>Launch Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">fnb.bado.vn</span>
+                                    <span class="text-[10px] text-amber-600 font-bold uppercase tracking-wider">F&B Management</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/project_fnb.jpg" alt="RetailFnb & POS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://fnb.bado.vn" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>Launch Live Platform</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a>
                                 </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
                                     <div>
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">Vinfast 3S An Giang</h3>
-                                            <span class="text-xs text-muted-text font-mono">vinfast3s-angiang.com</span>
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">RetailFnb & Ordering POS</h3>
+                                            <a href="https://fnb.bado.vn" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                                         </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            High-conversion authorized automotive showroom platform optimized for fast loading and mobile lead generation.
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Cloud POS for restaurants & cafes with dynamic table floor-plans, kitchen order tickets, and invoice printer integration.
                                         </p>
                                     </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="tag-sage">ASP.NET Core</span>
+                                            <span class="tag-sage">React</span>
+                                            <span class="tag-sage">PostgreSQL</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">Restaurant POS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arc Card 3: Vinfast Showroom An Giang -->
+                        <div class="arc-card hidden-right" data-index="2">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                    </div>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">vinfast3s-angiang.com</span>
+                                    <span class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Automotive 3S</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/project_vinfast.jpg" alt="Vinfast 3S An Giang" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://vinfast3s-angiang.com" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>Launch Live Platform</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">Vinfast 3S Showroom</h3>
+                                            <a href="https://vinfast3s-angiang.com" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                                        </div>
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Authorized automotive showroom platform with interactive 360 test-drive booking and installment calculator.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
                                             <span class="tag-sage">NextJS</span>
                                             <span class="tag-sage">Tailwind CSS</span>
                                             <span class="tag-sage">SEO Engine</span>
                                         </div>
-                                        <a href="https://vinfast3s-angiang.com" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Open <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                        </a>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">High Traffic</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 4: Bado Marketplace & Themes Engine -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/project_theme.jpg" alt="Bado Themes & Builder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        E-Commerce Themes
+                        <!-- Arc Card 4: Freshmart E-Commerce -->
+                        <div class="arc-card hidden-right" data-index="3">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                                     </div>
-                                    <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-1" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>Launch Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">bado.vn/nong-nghiep-1</span>
+                                    <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">E-Commerce</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/project_theme.jpg" alt="Freshmart Theme" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-1" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>Launch Live Platform</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a>
                                 </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
                                     <div>
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">Bado Themes Engine</h3>
-                                            <span class="text-xs text-muted-text font-mono">bado.vn</span>
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">Freshmart E-Commerce</h3>
+                                            <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-1" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                                         </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            E-commerce theme engine supporting multi-industry storefronts (Agriculture, Fashion, Digital Tech, Spa, F&B).
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Modern online supermarket template with cart checkout, coupon codes, and real-time inventory synchronization.
                                         </p>
                                     </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
                                             <span class="tag-sage">NextJS</span>
-                                            <span class="tag-sage">Tailwind</span>
                                             <span class="tag-sage">React</span>
+                                            <span class="tag-sage">Tailwind</span>
                                         </div>
-                                        <a href="https://bado.vn/ThemeWeb?theme=nong-nghiep-1" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Open <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                        </a>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">Storefront</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 5: Blockchain Student Records (Thesis) -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/project_blockchain.jpg" alt="Blockchain Student Records" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        Blockchain Thesis
+                        <!-- Arc Card 5: Blockchain Hyperledger Thesis -->
+                        <div class="arc-card hidden-left" data-index="4">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                                     </div>
-                                    <a href="https://github.com/tuanphan6511/BlockchainHososinhvien" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>View GitHub Source</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">github.com/tuanphan6511</span>
+                                    <span class="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Blockchain Thesis</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/project_blockchain.jpg" alt="Blockchain Student Records" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://github.com/tuanphan6511/BlockchainHososinhvien" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>View GitHub Source</span> <i class="fa-brands fa-github text-sm"></i>
                                     </a>
                                 </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
                                     <div>
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">Blockchain Records</h3>
-                                            <span class="text-xs text-muted-text font-mono">Hyperledger</span>
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">Academic Blockchain Records</h3>
+                                            <a href="https://github.com/tuanphan6511/BlockchainHososinhvien" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Code <i class="fa-brands fa-github text-xs"></i></a>
                                         </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            Decentralized academic transcript and diploma verification system utilizing Hyperledger Fabric smart contracts.
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Decentralized transcript verification platform using Hyperledger Fabric smart contracts and cryptographic proofs.
                                         </p>
                                     </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
                                             <span class="tag-sage">Hyperledger</span>
                                             <span class="tag-sage">NodeJS</span>
                                             <span class="tag-sage">Docker</span>
                                         </div>
-                                        <a href="https://github.com/tuanphan6511/BlockchainHososinhvien" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Code <i class="fa-brands fa-github text-xs"></i>
-                                        </a>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">Academic Thesis</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 6: Interactive Wedding Experience -->
-                        <div class="slider-slide p-3">
-                            <div class="luxury-card overflow-hidden h-full flex flex-col justify-between group">
-                                <div class="relative overflow-hidden aspect-[16/10] bg-slate-900">
-                                    <img src="assets/images/project_wedding.jpg" alt="Wedding Experience Site" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-3 left-3 bg-sage-dark/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                        Creative Animation
+                        <!-- Arc Card 6: Interactive Wedding Experience -->
+                        <div class="arc-card prev-1" data-index="5">
+                            <div class="luxury-card overflow-hidden bg-white p-2.5 sm:p-3 border border-sage-border/80 shadow-2xl flex flex-col h-full">
+                                <div class="flex items-center justify-between px-2 py-1.5 mb-1.5 border-b border-sage-border/50 text-[11px] text-muted-text">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                                     </div>
-                                    <a href="https://tuanphan6511.github.io/wedding/" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-semibold gap-2 text-sm">
-                                        <span>Launch Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    <span class="font-mono text-[10px] text-sage-dark font-semibold">github.io/wedding</span>
+                                    <span class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">Animation Studio</span>
+                                </div>
+                                <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 group">
+                                    <img src="assets/images/project_wedding.jpg" alt="Wedding Experience" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <a href="https://tuanphan6511.github.io/wedding/" target="_blank" class="absolute inset-0 flex items-center justify-center bg-dark-text/40 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-xs text-white font-bold gap-2 text-xs sm:text-sm">
+                                        <span>Launch Live Platform</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a>
                                 </div>
-                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
                                     <div>
                                         <div class="flex items-center justify-between">
-                                            <h3 class="font-display font-bold text-lg text-dark-text group-hover:text-sage-accent transition-colors">Wedding & Blog</h3>
-                                            <span class="text-xs text-muted-text font-mono">github.io/wedding</span>
+                                            <h3 class="font-display font-bold text-base sm:text-lg text-dark-text">Wedding Experience Portal</h3>
+                                            <a href="https://tuanphan6511.github.io/wedding/" target="_blank" class="text-xs font-bold text-sage-accent hover:underline flex items-center gap-1">Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                                         </div>
-                                        <p class="text-xs text-muted-text mt-2 line-clamp-2">
-                                            Interactive event invitation website featuring smooth CSS keyframe animations, responsive RSVP, and gallery.
+                                        <p class="text-xs text-muted-text mt-1 line-clamp-2">
+                                            Interactive invitation website with custom keyframe animations, audio synchronization, and guest RSVP storage.
                                         </p>
                                     </div>
-                                    <div class="mt-4 pt-3 border-t border-sage-border/60 flex items-center justify-between">
-                                        <div class="flex flex-wrap gap-1.5">
+                                    <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-sage-border/50 text-xs">
+                                        <div class="flex flex-wrap gap-1">
                                             <span class="tag-sage">JavaScript</span>
-                                            <span class="tag-sage">CSS Keyframes</span>
+                                            <span class="tag-sage">CSS3 Anim</span>
                                             <span class="tag-sage">HTML5</span>
                                         </div>
-                                        <a href="https://tuanphan6511.github.io/wedding/" target="_blank" class="text-xs font-bold text-sage-dark hover:text-sage-accent flex items-center gap-1">
-                                            Open <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                        </a>
+                                        <span class="text-[11px] font-bold text-sage-dark font-mono">Creative Live</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+                    <!-- Pagination Dots (Nằm hoàn toàn tách biệt bên dưới các thẻ) -->
+                    <div id="sliderPagination" class="flex items-center justify-center gap-2 relative z-40 mt-4 sm:mt-6"></div>
                 </div>
 
-                <!-- Slider Pagination Dots -->
-                <div id="sliderPagination" class="flex items-center justify-center gap-2 mt-4"></div>
+                <!-- Editorial Bottom Quote (Matching Reference Screenshot) -->
+                <div class="text-center max-w-3xl mx-auto mt-4 pt-3 border-t border-sage-border/60">
+                    <p class="text-[11px] sm:text-xs text-dark-text/75 leading-relaxed font-normal italic">
+                        "Your creative engineering process is constantly evolving, shaped by clean architecture, the organic beauty of minimalist UI, and the bold efficiency of modern web technologies."
+                    </p>
+                </div>
 
             </div>
         </section>
@@ -1050,16 +1081,27 @@
                 <!-- Footer Top CTA -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
                     
-                    <div class="lg:col-span-8 space-y-4">
+                    <div class="lg:col-span-8 space-y-3 sm:space-y-4">
                         <span class="text-xs font-bold uppercase tracking-widest text-sage-light flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Available for new opportunities
                         </span>
                         <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
-                            I'm excited to hear from you!
+                            Let's build something remarkable together.
                         </h2>
-                        <a href="mailto:pntuan6511@gmail.com" class="inline-block font-display font-extrabold text-2xl sm:text-4xl text-sage-light hover:text-white underline decoration-sage-light/40 underline-offset-8 transition-colors">
-                            pntuan6511@gmail.com
-                        </a>
+                        <div class="space-y-3 pt-1">
+                            <div>
+                                <a href="mailto:pntuan6511@gmail.com" class="inline-flex items-center gap-2.5 sm:gap-3.5 font-display font-extrabold text-2xl sm:text-4xl text-sage-light hover:text-white underline decoration-sage-light/40 underline-offset-8 transition-colors group">
+                                    <i class="fa-solid fa-envelope text-xl sm:text-3xl text-sage-accent group-hover:scale-110 transition-transform"></i>
+                                    <span>pntuan6511@gmail.com</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="tel:0976636511" class="inline-flex items-center gap-2.5 sm:gap-3.5 font-display font-extrabold text-2xl sm:text-4xl text-sage-light hover:text-white underline decoration-sage-light/40 underline-offset-8 transition-colors group">
+                                    <i class="fa-solid fa-phone text-xl sm:text-3xl text-sage-accent group-hover:scale-110 transition-transform"></i>
+                                    <span>+84 976 636 511</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Social & Contact Quick Links -->
@@ -1081,7 +1123,10 @@
                                 <i class="fa-solid fa-file-pdf"></i>
                             </a>
                         </div>
-                        <p class="text-xs text-white/60">Phone: +84 976 636 511 · Long Xuyen, Vietnam</p>
+                        <div class="flex items-center lg:justify-end gap-2 text-sm sm:text-base font-bold text-white/90">
+                            <i class="fa-solid fa-location-dot text-sage-accent text-sm"></i>
+                            <span>Vietnam</span>
+                        </div>
                     </div>
 
                 </div>
@@ -1094,11 +1139,11 @@
                         <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition-transform"></i>
                     </button>
 
-                    <!-- Giant Janice-style Brand Name -->
+                    <!-- Giant Brand Name -->
                     <div class="text-right">
                         <span class="text-xs text-white/50 block font-mono">@pntuan.dev</span>
                         <h3 class="hero-magazine-title text-6xl sm:text-8xl lg:text-9xl text-white tracking-tighter leading-none select-none">
-                            • Tuan
+                            • TuanPhan
                         </h3>
                     </div>
 

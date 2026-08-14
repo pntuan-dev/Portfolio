@@ -192,63 +192,67 @@ function initFloatingDotNav() {
 }
 
 /* ==========================================================================
-   3. RECENT WORK INTERACTIVE SLIDER
+   3. 3D CURVED ARC COVERFLOW CAROUSEL
    ========================================================================== */
 function initRecentWorkSlider() {
-  const track = document.getElementById('recentWorkTrack');
+  const stage = document.getElementById('arcCarouselStage');
   const prevBtn = document.getElementById('sliderPrevBtn');
   const nextBtn = document.getElementById('sliderNextBtn');
   const pagination = document.getElementById('sliderPagination');
-  if (!track) return;
+  if (!stage) return;
 
-  const slides = track.querySelectorAll('.slider-slide');
-  const totalSlides = slides.length;
-  let currentIndex = 0;
+  const cards = Array.from(stage.querySelectorAll('.arc-card'));
+  const totalCards = cards.length;
+  if (totalCards === 0) return;
 
-  function getVisibleSlides() {
-    if (window.innerWidth >= 1200) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  }
+  let activeIndex = 0;
 
-  function getMaxIndex() {
-    const visible = getVisibleSlides();
-    return Math.max(0, totalSlides - visible);
-  }
-
-  // Create pagination dots
+  // Render pagination dots
   function renderPagination() {
     if (!pagination) return;
     pagination.innerHTML = '';
-    const maxIndex = getMaxIndex();
-    for (let i = 0; i <= maxIndex; i++) {
+    for (let i = 0; i < totalCards; i++) {
       const dot = document.createElement('button');
-      dot.className = `slider-pagination-dot ${i === currentIndex ? 'active' : ''}`;
-      dot.setAttribute('aria-label', `Go to slide group ${i + 1}`);
+      dot.className = `slider-pagination-dot ${i === activeIndex ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Go to project ${i + 1}`);
       dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateSlider();
+        activeIndex = i;
+        updateArcCarousel();
       });
       pagination.appendChild(dot);
     }
   }
 
-  function updateSlider() {
-    const visible = getVisibleSlides();
-    const slideWidthPercent = 100 / visible;
-    const maxIndex = getMaxIndex();
+  function updateArcCarousel() {
+    cards.forEach((card, index) => {
+      // Calculate circular offset relative to activeIndex
+      const offset = (index - activeIndex + totalCards) % totalCards;
+      
+      // Clear all state classes
+      card.classList.remove('active', 'prev-1', 'next-1', 'prev-2', 'next-2', 'hidden-left', 'hidden-right');
 
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
-    if (currentIndex < 0) currentIndex = 0;
-
-    const translateValue = -(currentIndex * slideWidthPercent);
-    track.style.transform = `translateX(${translateValue}%)`;
+      if (offset === 0) {
+        card.classList.add('active');
+      } else if (offset === 1) {
+        card.classList.add('next-1');
+      } else if (offset === 2) {
+        card.classList.add('next-2');
+      } else if (offset === totalCards - 1) {
+        card.classList.add('prev-1');
+      } else if (offset === totalCards - 2) {
+        card.classList.add('prev-2');
+      } else if (offset > 2 && offset <= totalCards / 2) {
+        card.classList.add('hidden-right');
+      } else {
+        card.classList.add('hidden-left');
+      }
+    });
 
     // Update pagination dots
     if (pagination) {
       const dots = pagination.querySelectorAll('.slider-pagination-dot');
       dots.forEach((dot, idx) => {
-        if (idx === currentIndex) {
+        if (idx === activeIndex) {
           dot.classList.add('active');
         } else {
           dot.classList.remove('active');
@@ -257,52 +261,54 @@ function initRecentWorkSlider() {
     }
   }
 
+  // Click on cards to activate
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if (index !== activeIndex) {
+        activeIndex = index;
+        updateArcCarousel();
+      }
+    });
+  });
+
+  // Prev / Next button actions
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      currentIndex--;
-      if (currentIndex < 0) currentIndex = getMaxIndex();
-      updateSlider();
+      activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+      updateArcCarousel();
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      currentIndex++;
-      if (currentIndex > getMaxIndex()) currentIndex = 0;
-      updateSlider();
+      activeIndex = (activeIndex + 1) % totalCards;
+      updateArcCarousel();
     });
   }
 
   // Touch Swipe for Mobile
   let startX = 0;
   let currentX = 0;
-  track.addEventListener('touchstart', (e) => {
+  stage.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   }, { passive: true });
 
-  track.addEventListener('touchend', (e) => {
+  stage.addEventListener('touchend', (e) => {
     currentX = e.changedTouches[0].clientX;
     const diff = startX - currentX;
-    if (diff > 50) {
+    if (diff > 45) {
       // Next
-      currentIndex++;
-      if (currentIndex > getMaxIndex()) currentIndex = 0;
-      updateSlider();
-    } else if (diff < -50) {
+      activeIndex = (activeIndex + 1) % totalCards;
+      updateArcCarousel();
+    } else if (diff < -45) {
       // Prev
-      currentIndex--;
-      if (currentIndex < 0) currentIndex = getMaxIndex();
-      updateSlider();
+      activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+      updateArcCarousel();
     }
   });
 
-  window.addEventListener('resize', () => {
-    renderPagination();
-    updateSlider();
-  });
-
   renderPagination();
-  updateSlider();
+  updateArcCarousel();
 }
 
 /* ==========================================================================
