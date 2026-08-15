@@ -713,7 +713,7 @@ function initPreloader() {
 }
 
 /* ==========================================================================
-   11. CONTACT FORM CONTROLLER (FORMSUBMIT AJAX API)
+   11. CONTACT FORM CONTROLLER (GOOGLE APPS SCRIPT WEB APP API)
    ========================================================================== */
 function initContactForm() {
   const contactForm = document.getElementById('portfolioContactForm');
@@ -721,6 +721,9 @@ function initContactForm() {
 
   const submitBtn = document.getElementById('contactSubmitBtn');
   const alertBox = document.getElementById('contactFormAlert');
+
+  // Initialize Custom Subject Dropdown
+  initCustomSubjectDropdown();
 
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -767,6 +770,7 @@ function initContactForm() {
       if (data && data.result === 'success') {
         showContactAlert('success', '🎉 Thank you! Your message has been sent successfully. An automated confirmation email has also been sent to your inbox.');
         contactForm.reset();
+        resetCustomDropdown();
       } else {
         throw new Error(data && data.error ? data.error : 'Submission failed');
       }
@@ -775,6 +779,7 @@ function initContactForm() {
       // Fallback: If network succeeded in background or CORS opaque response
       showContactAlert('success', '🎉 Thank you! Your message has been sent successfully. I will get back to you shortly.');
       contactForm.reset();
+      resetCustomDropdown();
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -797,5 +802,118 @@ function initContactForm() {
       alertBox.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-600 text-sm shrink-0"></i> <span>${msg}</span>`;
     }
     alertBox.classList.remove('hidden');
+  }
+
+  // Custom Dropdown Controller
+  function initCustomSubjectDropdown() {
+    const trigger = document.getElementById('subjectDropdownTrigger');
+    const menu = document.getElementById('subjectDropdownMenu');
+    const chevron = document.getElementById('subjectDropdownChevron');
+    const hiddenInput = document.getElementById('contactSubject');
+    const displaySpan = document.getElementById('selectedSubjectDisplay');
+    const options = document.querySelectorAll('.custom-dropdown-option');
+
+    if (!trigger || !menu || !hiddenInput || !displaySpan) return;
+
+    let isOpen = false;
+
+    function openDropdown() {
+      isOpen = true;
+      trigger.setAttribute('aria-expanded', 'true');
+      menu.classList.remove('hidden');
+      // Trigger animation frame for smooth opacity transition
+      requestAnimationFrame(() => {
+        menu.classList.remove('opacity-0', 'translate-y-1');
+        menu.classList.add('opacity-100', 'translate-y-0');
+      });
+      if (chevron) chevron.classList.add('rotate-180', 'text-sage-dark');
+    }
+
+    function closeDropdown() {
+      isOpen = false;
+      trigger.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('opacity-100', 'translate-y-0');
+      menu.classList.add('opacity-0', 'translate-y-1');
+      if (chevron) chevron.classList.remove('rotate-180', 'text-sage-dark');
+      setTimeout(() => {
+        if (!isOpen) menu.classList.add('hidden');
+      }, 200);
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    options.forEach((opt) => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = opt.getAttribute('data-value');
+        const iconClass = opt.getAttribute('data-icon') || 'fa-solid fa-briefcase';
+
+        hiddenInput.value = val;
+
+        // Update display on trigger
+        displaySpan.innerHTML = `<i class="${iconClass} text-sage-dark text-xs w-4 text-center"></i> <span class="truncate">${val}</span>`;
+
+        // Update active checkmarks
+        options.forEach((o) => {
+          const check = o.querySelector('.checkmark-icon');
+          if (o === opt) {
+            o.classList.add('bg-sage-bg/40');
+            if (check) check.classList.remove('hidden');
+          } else {
+            o.classList.remove('bg-sage-bg/40');
+            if (check) check.classList.add('hidden');
+          }
+        });
+
+        closeDropdown();
+      });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (isOpen && !trigger.contains(e.target) && !menu.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (isOpen && e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
+  }
+
+  function resetCustomDropdown() {
+    const hiddenInput = document.getElementById('contactSubject');
+    const displaySpan = document.getElementById('selectedSubjectDisplay');
+    const options = document.querySelectorAll('.custom-dropdown-option');
+
+    if (!hiddenInput || !displaySpan || options.length === 0) return;
+
+    const firstOpt = options[0];
+    const val = firstOpt.getAttribute('data-value') || 'Enterprise POS / ERP Architecture';
+    const iconClass = firstOpt.getAttribute('data-icon') || 'fa-solid fa-server';
+
+    hiddenInput.value = val;
+    displaySpan.innerHTML = `<i class="${iconClass} text-sage-dark text-xs w-4 text-center"></i> <span class="truncate">${val}</span>`;
+
+    options.forEach((o, idx) => {
+      const check = o.querySelector('.checkmark-icon');
+      if (idx === 0) {
+        o.classList.add('bg-sage-bg/40');
+        if (check) check.classList.remove('hidden');
+      } else {
+        o.classList.remove('bg-sage-bg/40');
+        if (check) check.classList.add('hidden');
+      }
+    });
   }
 }
