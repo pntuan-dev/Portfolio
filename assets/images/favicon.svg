@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Deep Obsidian Black Background -->
+  <rect width="128" height="128" rx="36" fill="#09090b"/>
+  
+  <!-- Bold Minimalist Geometric "P" (Represents PNTUAN & Portfolio) -->
+  <path fill-rule="evenodd" clip-rule="evenodd" 
+        d="M 36 24 H 70 C 88.7777 24 104 39.2223 104 58 C 104 76.7777 88.7777 92 70 92 H 58 V 104 H 36 V 24 Z M 58 44 V 72 H 70 C 77.732 72 84 65.732 84 58 C 84 50.268 77.732 44 70 44 H 58 Z" 
+        fill="#FFFFFF"/>
+</svg>
