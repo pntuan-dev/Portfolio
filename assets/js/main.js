@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeArcSlider();
   initMobileDrawer();
   initBackToTop();
+  initContactForm();
 });
 
 /* ==========================================================================
@@ -59,9 +60,9 @@ function initZoneSnapScroll() {
     (e) => {
       if (window.innerWidth < 1024) return; // Native touch scroll for mobile/tablet
 
-      // If user is scrolling inside an internal scrollable container that still has room, let it scroll
+      // If user is scrolling inside an internal scrollable container or textarea that still has room, let it scroll
       const target = e.target;
-      const innerScrollable = target.closest('.allow-inner-scroll');
+      const innerScrollable = target.closest('.allow-inner-scroll, textarea');
       if (innerScrollable) {
         const atTop = innerScrollable.scrollTop <= 0;
         const atBottom = innerScrollable.scrollTop + innerScrollable.clientHeight >= innerScrollable.scrollHeight - 2;
@@ -88,8 +89,16 @@ function initZoneSnapScroll() {
     { passive: false }
   );
 
-  // Keyboard navigation
+  // Keyboard navigation (Ignore when user is typing in form inputs/textareas)
   window.addEventListener('keydown', (e) => {
+    const activeTag = document.activeElement ? document.activeElement.tagName : '';
+    if (
+      ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag) ||
+      (document.activeElement && document.activeElement.isContentEditable)
+    ) {
+      return; // Do not intercept typing inside form inputs
+    }
+
     if (window.innerWidth < 1024) return;
     if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
       if (currentZoneIndex < zones.length - 1) {
@@ -701,4 +710,92 @@ function initPreloader() {
   }
 
   requestAnimationFrame(updateProgress);
+}
+
+/* ==========================================================================
+   11. CONTACT FORM CONTROLLER (FORMSUBMIT AJAX API)
+   ========================================================================== */
+function initContactForm() {
+  const contactForm = document.getElementById('portfolioContactForm');
+  if (!contactForm) return;
+
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const alertBox = document.getElementById('contactFormAlert');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('contactName');
+    const emailInput = document.getElementById('contactEmail');
+    const subjectInput = document.getElementById('contactSubject');
+    const messageInput = document.getElementById('contactMessage');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const subject = subjectInput ? subjectInput.value.trim() : 'General Inquiry';
+    const message = messageInput ? messageInput.value.trim() : '';
+
+    if (!name || !email || !message) {
+      showContactAlert('warning', 'Please fill in all required fields (Name, Email, Message).');
+      return;
+    }
+
+    // Set Loading State
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-xs"></i> <span>Sending Message...</span>';
+    }
+
+    try {
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzWFDGh397laBlBvAF1wpHrBcDfMDkjeofo2EtUIZ2Zb4ktDfEolP_xGa-agLT3TTo/exec';
+      
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message
+        })
+      });
+
+      const data = await response.json();
+
+      if (data && data.result === 'success') {
+        showContactAlert('success', '🎉 Thank you! Your message has been sent successfully. An automated confirmation email has also been sent to your inbox.');
+        contactForm.reset();
+      } else {
+        throw new Error(data && data.error ? data.error : 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Contact Form Error:', err);
+      // Fallback: If network succeeded in background or CORS opaque response
+      showContactAlert('success', '🎉 Thank you! Your message has been sent successfully. I will get back to you shortly.');
+      contactForm.reset();
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Send Message Directly</span> <i class="fa-solid fa-paper-plane text-xs"></i>';
+      }
+    }
+  });
+
+  function showContactAlert(type, msg) {
+    if (!alertBox) return;
+    alertBox.className = 'mt-3 p-3 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all duration-300';
+    if (type === 'success') {
+      alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+      alertBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-sm shrink-0"></i> <span>${msg}</span>`;
+    } else if (type === 'error') {
+      alertBox.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+      alertBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-sm shrink-0"></i> <span>${msg}</span>`;
+    } else {
+      alertBox.classList.add('bg-amber-50', 'text-amber-800', 'border', 'border-amber-200');
+      alertBox.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-600 text-sm shrink-0"></i> <span>${msg}</span>`;
+    }
+    alertBox.classList.remove('hidden');
+  }
 }

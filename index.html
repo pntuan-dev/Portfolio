@@ -162,9 +162,14 @@
                 aria-label="Zone 4: Theme Storefronts"></button>
         </div>
         <div class="floating-dot-item">
-            <span class="floating-dot-label">05. Contact & Footer</span>
+            <span class="floating-dot-label">05. Contact Form</span>
             <button class="floating-dot-btn" data-zone-index="4" data-zone-id="zone-contact"
-                aria-label="Zone 5: Contact and Footer"></button>
+                aria-label="Zone 5: Contact Form"></button>
+        </div>
+        <div class="floating-dot-item">
+            <span class="floating-dot-label">06. Footer & Connect</span>
+            <button class="floating-dot-btn" data-zone-index="5" data-zone-id="zone-footer"
+                aria-label="Zone 6: Footer and Connect"></button>
         </div>
     </nav>
 
@@ -242,6 +247,16 @@
                                 class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">05</span>
                             <span
                                 class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Contact
+                                Form</span>
+                        </button>
+                    </li>
+                    <li class="nav-stagger-item">
+                        <button class="nav-overlay-link group flex items-center gap-4 sm:gap-6 text-left w-full"
+                            data-zone-index="5">
+                            <span
+                                class="font-mono text-xs sm:text-sm text-sage-light/70 font-bold group-hover:text-emerald-400 transition-colors">06</span>
+                            <span
+                                class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white group-hover:translate-x-3 group-hover:text-emerald-400 transition-all duration-300">Footer
                                 & Connect</span>
                         </button>
                     </li>
@@ -2584,9 +2599,172 @@
         </section>
 
         <!-- ==========================================================================
-           ZONE 5: FOOTER & CONTACT CTA
+           ZONE 5: CONTACT & GET IN TOUCH (LUXURY EDITORIAL FORM & WATERMARK BG)
            ========================================================================== -->
-        <section id="zone-contact" class="zone-section bg-footer-bg text-white relative overflow-hidden">
+        <section id="zone-contact"
+            class="zone-section bg-sage-bg relative overflow-hidden flex flex-col justify-center">
+
+            <!-- Giant Artistic Staggered Watermark Name in Background (Matching Hero) -->
+            <div
+                class="absolute inset-0 flex flex-col justify-center pointer-events-none select-none z-0 overflow-hidden px-2 sm:px-6">
+                <span
+                    class="font-display font-black text-[18vw] lg:text-[13.5rem] tracking-tighter text-sage-primary/[0.08] leading-[0.78] text-left transform -translate-x-2 sm:-translate-x-6">
+                    Tuan
+                </span>
+                <span
+                    class="font-display font-black text-[18vw] lg:text-[13.5rem] tracking-tighter text-sage-primary/[0.08] leading-[0.78] text-right transform translate-x-2 sm:translate-x-6 mt-1 sm:mt-3">
+                    Phan
+                </span>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-3 sm:py-5 relative z-10">
+
+                <!-- Section Header (Centered Editorial Style) -->
+                <div class="text-center max-w-2xl mx-auto mb-3 sm:mb-5">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sage-accent block mb-1">05 / Connect
+                        & Collaborate</span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-dark-text tracking-tight">Get In
+                        Touch</h2>
+                    <p class="text-xs sm:text-sm text-muted-text mt-1 leading-relaxed font-normal">
+                        Have a project inquiry, want to discuss software architectures, or explore collaboration? Send a
+                        message directly to my inbox.
+                    </p>
+                </div>
+
+                <!-- 2-Column Responsive Contact Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch max-w-6xl mx-auto">
+
+                    <!-- Left Column: Direct Contact & Availability (5 Cols) -->
+                    <div
+                        class="lg:col-span-5 flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-md border border-sage-border/80 shadow-md space-y-4">
+                        <div>
+                            <div
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[11px] font-bold text-emerald-800 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Available for new opportunities</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-dark-text tracking-tight">
+                                Let's Build Something Exceptional
+                            </h3>
+                            <p class="text-xs sm:text-sm text-muted-text mt-1.5 leading-relaxed">
+                                Whether you need high-performance POS/ERP systems, tailored SaaS solutions, or fullstack
+                                engineering, I'm ready to turn your ideas into reality.
+                            </p>
+                        </div>
+
+                        <!-- Direct Reach Details -->
+                        <div class="space-y-2.5 pt-2 border-t border-sage-border/60 text-xs sm:text-sm">
+                            <a href="mailto:pntuan6511@gmail.com"
+                                class="flex items-center gap-3 p-2.5 rounded-xl bg-sage-bg/60 hover:bg-sage-bg text-dark-text hover:text-sage-accent transition-colors font-medium group">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-white shadow-2xs flex items-center justify-center text-sage-dark group-hover:text-sage-accent transition-colors">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <span class="truncate">pntuan6511@gmail.com</span>
+                            </a>
+                            <a href="tel:0976636511"
+                                class="flex items-center gap-3 p-2.5 rounded-xl bg-sage-bg/60 hover:bg-sage-bg text-dark-text hover:text-sage-accent transition-colors font-medium group">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-white shadow-2xs flex items-center justify-center text-sage-dark group-hover:text-sage-accent transition-colors">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <span>+84 976 636 511</span>
+                            </a>
+                            <div
+                                class="flex items-center gap-3 p-2.5 rounded-xl bg-sage-bg/60 text-dark-text font-medium">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-white shadow-2xs flex items-center justify-center text-sage-dark">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+                                <span>Vietnam (Worldwide Remote)</span>
+                            </div>
+                        </div>
+
+                        <!-- Guarantee Badge -->
+                        <div class="pt-2 border-t border-sage-border/60 flex items-center justify-between text-[11px] text-muted-text font-semibold">
+                            <span class="flex items-center gap-1.5 text-sage-dark font-bold">
+                                <i class="fa-solid fa-bolt text-amber-500"></i> Fast Response
+                            </span>
+                            <span>Guaranteed reply within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Contact Form (7 Cols) -->
+                    <div
+                        class="lg:col-span-7 p-5 sm:p-6 rounded-2xl bg-white border border-sage-border/80 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3.5 pb-2 border-b border-sage-border/60">
+                                <h3 class="font-display font-bold text-base sm:text-lg text-dark-text flex items-center gap-2">
+                                    <i class="fa-solid fa-paper-plane text-sage-accent text-sm"></i> Send Direct Message
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold text-muted-text font-mono">Instant Inbox</span>
+                            </div>
+
+                            <form id="portfolioContactForm" class="space-y-3">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label for="contactName" class="block text-[11px] font-bold text-dark-text mb-1 uppercase tracking-wider">
+                                            Your Name <span class="text-rose-500">*</span>
+                                        </label>
+                                        <input type="text" id="contactName" name="name" required
+                                            placeholder="Phan Ngoc Tuan"
+                                            class="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-sage-border bg-sage-bg/30 text-dark-text focus:outline-hidden focus:border-sage-dark focus:bg-white transition-all shadow-2xs">
+                                    </div>
+                                    <div>
+                                        <label for="contactEmail" class="block text-[11px] font-bold text-dark-text mb-1 uppercase tracking-wider">
+                                            Your Email <span class="text-rose-500">*</span>
+                                        </label>
+                                        <input type="email" id="contactEmail" name="email" required
+                                            placeholder="client@example.com"
+                                            class="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-sage-border bg-sage-bg/30 text-dark-text focus:outline-hidden focus:border-sage-dark focus:bg-white transition-all shadow-2xs">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="contactSubject" class="block text-[11px] font-bold text-dark-text mb-1 uppercase tracking-wider">
+                                        Project / Service Type
+                                    </label>
+                                    <select id="contactSubject" name="subject"
+                                        class="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-sage-border bg-sage-bg/30 text-dark-text focus:outline-hidden focus:border-sage-dark focus:bg-white transition-all shadow-2xs">
+                                        <option value="Enterprise POS / ERP Architecture">Enterprise POS / ERP Architecture</option>
+                                        <option value="Fullstack Web Application (NextJS / .NET)">Fullstack Web Application (NextJS / .NET)</option>
+                                        <option value="Mobile App (Flutter / React Native)">Mobile App (Flutter / React Native)</option>
+                                        <option value="E-Commerce & Storefront Solution">E-Commerce & Storefront Solution</option>
+                                        <option value="Career & Recruitment Inquiry">Career & Recruitment Inquiry</option>
+                                        <option value="General Inquiry / Hello">General Inquiry / Other</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="contactMessage" class="block text-[11px] font-bold text-dark-text mb-1 uppercase tracking-wider">
+                                        Message <span class="text-rose-500">*</span>
+                                    </label>
+                                    <textarea id="contactMessage" name="message" required rows="3"
+                                        placeholder="Describe your project, timeline, or requirements..."
+                                        class="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-sage-border bg-sage-bg/30 text-dark-text focus:outline-hidden focus:border-sage-dark focus:bg-white transition-all shadow-2xs resize-none"></textarea>
+                                </div>
+
+                                <button type="submit" id="contactSubmitBtn"
+                                    class="w-full py-2.5 sm:py-3 px-6 rounded-xl bg-sage-dark hover:bg-sage-primary text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer">
+                                    <span>Send Message Directly</span>
+                                    <i class="fa-solid fa-paper-plane text-xs group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"></i>
+                                </button>
+                            </form>
+
+                            <!-- Inline Form Alert Box (Hidden by default) -->
+                            <div id="contactFormAlert" class="hidden"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           ZONE 6: FOOTER & BRANDING
+           ========================================================================== -->
+        <section id="zone-footer" class="zone-section bg-footer-bg text-white relative overflow-hidden">
             <div
                 class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 sm:pt-20 lg:pt-16 pb-4 sm:pb-6 flex flex-col justify-between h-full">
 
